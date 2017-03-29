@@ -1,0 +1,227 @@
+{% load static %}
+{% load filters %}
+{% load humanize %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Prestamela</title>
+    <meta charset="utf-8" />
+    <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet">
+    <link href="{% static 'css/index.css'%}" rel="stylesheet">
+    <link href="{% static 'fa/css/font-awesome.min.css'%}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap-social.css'%}" rel="stylesheet">
+    <script src="{% static 'js/jquery-3.2.0.min.js' %}" charset="utf-8"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+           <div class="row header-body">
+               <div class="logos">
+                   <div class="pretamela_logo pull-left">
+                       <img src="{% static 'img/logo.png'%}" alt="logo prestamela">
+                   </div>
+                   <div class="ecommerce_logo pull-left">
+                       <img src="{{logo_url}}" alt="logo ecommerce">
+                   </div>
+               </div>
+               <div class="pasos pull-right">
+                    <div class="stepwizard">
+                        <div class="stepwizard-row">
+                            <div class="stepwizard-step">
+                                <button type="button" class="btn btn-primary btn-circle finan-btn" disabled>1</button>
+                                <p>Financiación</p>
+                            </div>
+                            <div class="stepwizard-step">
+                                <button type="button" class="btn btn-default btn-circle ident-btn" disabled>2</button>
+                                <p>Identificación</p>
+                            </div>
+                            <div class="stepwizard-step">
+                                <button type="button" class="btn btn-default btn-circle auten-btn" disabled>3</button>
+                                <p>Autenticación</p>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+           </div>
+        </header>
+        <hr>
+        <section>
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h2 class="panel-title">
+                            <span class="glyphicon glyphicon-folder-close"></span>
+                            Decide cuánto quieres pagar y cuándo.
+                        </h2>
+                    </div>
+                    <div id="financiacion" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-sm-12 financiacion-div">
+                                    <div class="fb-like" data-share="true" data-width="450" data-show-faces="true"></div>
+                                    <form class="form-inline" role="form">
+                                        <div class="form-group">
+                                            Quiero financiar mi compra a
+                                            <select class="form-control meses" id="meses" required>
+                                                <option value="1">1 meses</option>
+                                                <option value="2">2 meses</option>
+                                                <option value="3">3 meses</option>
+                                                <option value="4">4 meses</option>
+                                                <option value="5">5 meses</option>
+                                                <option value="6" selected>6 meses</option>
+                                            </select>
+                                            y pagar el
+                                            <select class="form-control dia" id="dia" required>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
+                                                <option value="12">12</option>
+                                                <option value="13">13</option>
+                                                <option value="14">14</option>
+                                                <option value="15" selected>15</option>
+                                            </select>
+                                            de cada mes.
+                                        </div>
+                                    </form>
+                                    <div class="subtotal">
+                                        <div class="row">
+                                            <div class="col-sm-7">
+                                                <div class="nz-label pull-left">
+                                                    <p>Subtotal productos:</p>
+                                                    <p>Administración:</p>
+                                                    <p>Seguro:</p>
+                                                    <p>Plataforma:</p>
+                                                    <p>IVA (19%):</p>
+                                                    <p>Interés:</p>
+                                                    <p>Total:</p>
+                                                </div>
+                                                <div class="nz-value pull-left">
+                                                    <p>$ {{total|intcomma}}</p>
+                                                    <p>$ {{config.admin_costs|intcomma}}</p>
+                                                    <p>$ {{config.insurance|intcomma}}</p>
+                                                    <p>$ {{config.system_costs|intcomma}}</p>
+                                                    <p>$ {{config.get_iva|intcomma}}</p>
+                                                    <p id="interes">$ </p>
+                                                    <p id="total">$ </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-5">
+                                                <div class="circulo resultados">
+                                                    <p id="valor_cuotas"></p>
+                                                    <p id="num_cuotas"></p>
+                                                    <p id="dia_cuotas"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="padding: 15px 30px;">
+                                <button id="continuar" type="button" class="btn btn-default btn-lg">Continuar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h2 class="panel-title">
+                            <span class="glyphicon glyphicon-user"></span>
+                            Identifícate en un clic.
+                        </h2>
+                    </div>
+                    <div id="identificacion" style="display:none;">
+                        <div class="panel-body">
+                            Para que podamos aprobar tu crédito, necesitamos que
+                            te identifiques ingresado con tu cuenta de Facebook
+                            o de LinkedIn.
+                            <div class="row">
+                                <div class="social-lg-btn pull-left">
+                                    <a class="facebook-login btn btn-block btn-lg btn-social btn-facebook">
+                                        <span class="fa fa-facebook"></span> Ingresar con Facebook
+                                    </a>
+                                </div>
+                                <div class="pull-left fb-loading-icon">
+                                    <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                                </div>
+                                <div class="pull-left fb-completed-icon">
+                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="social-lg-btn pull-left">
+                                    <a class="btn btn-block btn-lg btn-social btn-linkedin">
+                                        <span class="fa fa-linkedin"></span> Ingresar con LinkedIn
+                                    </a>
+                                </div>
+                                <div class="pull-left li-loading-icon">
+                                    <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                                </div>
+                            </div>
+                            <div class="row" style="padding: 15px 30px;">
+                                <button id="continuar2" type="button" class="btn btn-default btn-lg" disabled>Continuar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h2 class="panel-title">
+                            <span class="glyphicon glyphicon-th"></span>
+                            Firma con tu código SMS.
+                        </h2>
+                    </div>
+                    <div id="autenticacion" style="display:none;">
+                        <div class="panel-body">
+                            <p>
+                                Pra que podamos autenticar que tú eres el dueño de la
+                                cuenta de identificación, te enviaremos un código de 4
+                                dígitos a tu número celular.
+                            </p>
+                            <p>
+                                Ingresa tu número de telefono celular:
+                                <input type="text" class="input-medium bfh-phone" data-format="+57 ddd-ddd-dddd">
+                                <input type="text" class="input-medium bfh-phone" data-country="CO">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <hr>
+            &copy; Todos los derechos reservados
+        </footer>
+    </div>
+<script src="{% static 'js/fb.js' %}" charset="utf-8"></script>
+<script src="{% static 'js/index.js' %}" charset="utf-8"></script>
+<script type="text/javascript">
+$(function() {
+    var subtotal = {{total}};
+    var admin = {{config.admin_costs}};
+    var seguro = {{config.insurance}};
+    var plataf = {{config.system_costs}};
+    var iva = {{config.get_iva}};
+    var tasa = {{config.interest}};
+    var meses = $('#meses').val();
+    var interes = calcular_cuota(subtotal, tasa, meses);
+    var total = subtotal + admin + seguro + plataf + iva + interes;
+    $('#total').text('$' + parseInt(total).toLocaleString());
+    $('#dia_cuotas').text('día ' + $('#dia').val());
+    $('#meses').on('change', function(e){
+        meses = $('#meses').val();
+        interes = calcular_cuota(subtotal, tasa, meses);
+        total = subtotal + admin + seguro + plataf + iva + interes;
+        $('#total').text('$' + parseInt(total).toLocaleString());
+    });
+});
+</script>
+</body>
+</html>

@@ -25,7 +25,7 @@ SECRET_KEY = 'a3%t^yrvnq!3%o%-l(g5ix*5w$fyt0f1^6-f6m6m1eygn7*w(m'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['35.184.72.248']
+ALLOWED_HOSTS = ['prestame.la','prestamela.co']
 
 
 # Application definition

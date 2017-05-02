@@ -1,8 +1,9 @@
 $(function(){
     $('#dia').on('change', function(){
-        $('#dia_cuotas').text('día ' + $('#dia').val());
+        var dia_cuota = 'día ' + $('#dia').val();
+        $('#dia_cuotas').text();
     });
-    $('#sms-btn').on('click', funtion(){
+    $('#sms-btn').on('click', function(){
         $('#confirm-sms-p').fadeIn();
     });
 });

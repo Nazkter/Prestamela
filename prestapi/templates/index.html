@@ -181,14 +181,19 @@
                     <div id="autenticacion" style="display:none;">
                         <div class="panel-body">
                             <p>
-                                Pra que podamos autenticar que tú eres el dueño de la
+                                Para que podamos autenticar que tú eres el dueño de la
                                 cuenta de identificación, te enviaremos un código de 4
                                 dígitos a tu número celular.
                             </p>
-                            <p>
+                            <p id="phone-p">
                                 Ingresa tu número de telefono celular:
-                                <input type="text" class="input-medium bfh-phone" data-format="+57 ddd-ddd-dddd">
-                                <input type="text" class="input-medium bfh-phone" data-country="CO">
+                                <input type="text">
+                                <button id="sms-btn" type="button" class="btn btn-default btn" disabled>Enviar Código</button>
+                            </p>
+                            <p id="confirm-sms-p" style="doaplay:none;">
+                                Ingresa el codigo de confirmación que llegó a tu telefono celular:
+                                <input type="text">
+                                <button id="sms-btn" type="button" class="btn btn-default btn" disabled>Finalizar solicitud</button>
                             </p>
                         </div>
                     </div>

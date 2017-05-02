@@ -61,3 +61,14 @@ $('#phone_number').on('input', function(){
         $('#sms-btn').prop('disabled', true);
     }
 });
+$('#finish-btn').on('input', function(){
+    if(this.value.length == 4 ){
+        $('#sms-btn').prop('disabled', false);
+    }else{
+        $('#sms-btn').prop('disabled', true);
+    }
+});
+$('#finish-btn').on('click', function(){
+    $('#confirm-sms-p').hide();
+    $('#final-p').fadeIn();
+});

@@ -52,3 +52,10 @@ $('#continuar2').on('click', function(){
         $('#autenticacion').slideDown();
     });
 });
+$('#phone_number').on('input', function(){
+    if(this.value.length == 10 ){
+        $(this).removeProp('disabled');
+    }else{
+        $(this).prop('disabled', true);
+    }
+});

@@ -56,7 +56,7 @@ $('#continuar2').on('click', function(){
 });
 $('#phone_number').on('input', function(){
     if(this.value.length == 10 ){
-        $('#sms-btn').removeProp('disabled');
+        $('#sms-btn').prop('disabled', false);
     }else{
         $('#sms-btn').prop('disabled', true);
     }

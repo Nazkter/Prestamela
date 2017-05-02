@@ -63,9 +63,9 @@ $('#phone_number').on('input', function(){
 });
 $('#confirmation_code').on('input', function(){
     if(this.value.length == 4 ){
-        $('#sms-btn').prop('disabled', false);
+        $('#finish-btn').prop('disabled', false);
     }else{
-        $('#sms-btn').prop('disabled', true);
+        $('#finish-btn').prop('disabled', true);
     }
 });
 $('#finish-btn').on('click', function(){

@@ -4,6 +4,7 @@ $(function(){
         $('#dia_cuotas').text();
     });
     $('#sms-btn').on('click', function(){
+        $('#phone-p').hide();
         $('#confirm-sms-p').fadeIn();
     });
 });
@@ -55,8 +56,8 @@ $('#continuar2').on('click', function(){
 });
 $('#phone_number').on('input', function(){
     if(this.value.length == 10 ){
-        $(this).removeProp('disabled');
+        $('#sms-btn').removeProp('disabled');
     }else{
-        $(this).prop('disabled', true);
+        $('#sms-btn').prop('disabled', true);
     }
 });

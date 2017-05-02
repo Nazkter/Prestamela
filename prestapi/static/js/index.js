@@ -2,6 +2,9 @@ $(function(){
     $('#dia').on('change', function(){
         $('#dia_cuotas').text('día ' + $('#dia').val());
     });
+    $('#sms-btn').on('click', funtion(){
+        $('#confirm-sms-p').fadeIn();
+    });
 });
 function calcular_cuota(subtotal, tasa, meses) {
     var cuota = (tasa*subtotal)/(1-(Math.pow((1+tasa),-meses)));

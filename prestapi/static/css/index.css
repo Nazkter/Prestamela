@@ -14,6 +14,13 @@ footer{
     position: fixed;
     margin: 10px 10px 20px;
 }
+#final-p{
+    background-color: #8BC34A;
+    padding: 10px;
+    border-radius: 5px;
+    color: black;
+    font-size: 16px;
+}
 .pasos{
     width: 300px;
 }

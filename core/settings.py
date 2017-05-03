@@ -25,7 +25,7 @@ SECRET_KEY = 'a3%t^yrvnq!3%o%-l(g5ix*5w$fyt0f1^6-f6m6m1eygn7*w(m'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['prestame.la','prestamela.co']
 
 
 # Application definition
@@ -74,11 +74,15 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
-
+# [START dbconfig]
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'prestamela',
+        'USER': 'prestamela',
+        'PASSWORD': 'lJ1GtryDH"sha',
+        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        'PORT': '3306',
     }
 }
 

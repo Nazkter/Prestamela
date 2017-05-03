@@ -26,10 +26,11 @@ def show_form(request):
                             'msg': 'Cliente no existe',
                         }
     else:
-        response  = {   'success': False,
+        return render(request, 'home.html')
+        '''response  = {   'success': False,
                         'error': True,
                         'msg': 'Datos faltantes',
-                    }
+                    }'''
     return JsonResponse( response )
 
 

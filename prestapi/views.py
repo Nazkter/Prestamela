@@ -3,6 +3,9 @@ from django.http import JsonResponse
 from prestapi.models import Config, Client
 import json
 
+
+def show_privacy_policy(request):
+    return render(request, 'privacy-policy.html')
 # Create your views here.
 def show_form(request):
     # 1 - Obtengo las credenciales y las cotejo con BD

@@ -10,7 +10,15 @@
     <link href="{% static 'css/index.css'%}" rel="stylesheet">
     <link href="{% static 'fa/css/font-awesome.min.css'%}" rel="stylesheet">
     <link href="{% static 'css/bootstrap-social.css'%}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap-datepicker.min.css'%}" rel="stylesheet">
     <script src="{% static 'js/jquery-3.2.0.min.js' %}" charset="utf-8"></script>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+    <link href="fa/css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/bootstrap-social.css" rel="stylesheet">
+    <link href="css/bootstrap-datepicker.min.css" rel="stylesheet">
+    <script src="js/jquery-3.2.0.min.js" charset="utf-8"></script>
 </head>
 <body>
     <div class="container">
@@ -176,41 +184,271 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="inscription">
+                            <div class="inscription" style="padding: 0 10%">
+                                <h3>Formulario de solicitud</h3>
+                                <p>Por favor complete el siguiente formulario con la información solicitada, todos los campos son necesarios para enviar la solicitud</p>
                                 <form class="form-horizontal">
+                                    <h4 style="text-align: center;margin-top: 30px;">Información básica</h4>
                                     <div class="form-group row">
-                                        <label for="inputEmail3" class="col-sm-12">Email</label>
-                                        <div class="col-sm-12">
-                                            <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label for="inputEmail3" class="col-sm-12">Primer nombre: *</label>
+                                            <div class="col-sm-12">
+                                                <input type="email" class="form-control" name="first_name" id="first_name" placeholder="" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label for="inputEmail3" class="col-sm-12">Segundo nombre: *</label>
+                                            <div class="col-sm-12">
+                                                <input type="email" class="form-control" name="second_name" id="second_name" placeholder="" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label for="inputEmail3" class="col-sm-12">Primer apellido: *</label>
+                                            <div class="col-sm-12">
+                                                <input type="email" class="form-control" name="last_name" id="last_name" placeholder="" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label for="inputEmail3" class="col-sm-12">Segundo apellido: *</label>
+                                            <div class="col-sm-12">
+                                                <input type="email" class="form-control" name="second_last_name" id="second_last_name" placeholder="" required>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <div class="col-sm-6">
-                                            <label for="inputPassword3" class="col-sm-12 control-label">Password</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label for="inputPassword3" class="col-sm-12">Tipo de documento: *</label>
                                             <div class="col-sm-12">
-                                                <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                                                <select class="form-control" name="document_type" id="document_type" required>
+                                                    <option value="">Seleccione un tipo de documento</option>
+                                                    <option value="1">C.C</option>
+                                                    <option value="2">C.E</option>
+                                                </select>
                                             </div>
                                         </div>
-                                        <div class="col-sm-6">
-                                            <label for="inputPassword3" class="col-sm-12 control-label">Password</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label for="inputPassword3" class="col-sm-12">Número de documento: *</label>
                                             <div class="col-sm-12">
-                                                <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                                                <input type="number" class="form-control" name="document_id" id="document_id" placeholder="" required>
                                             </div>
                                         </div>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-sm-offset-2 col-sm-10">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox"> Remember me
-                                                </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label for="inputPassword3" class="col-sm-12">Fecha de expedición: *</label>
+                                            <div class="col-sm-12">
+                                                <div class="input-group">
+                                                    <input type="text" class="datepicker form-control" id="expedition_date" name="expedition_date" placeholder="" aria-describedby="basic-addon2" required>
+                                                    <span class="input-group-addon" id="basic-addon2"><span class="fa fa-calendar"></span></span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <div class="col-sm-offset-2 col-sm-10">
-                                            <button type="submit" class="btn btn-default">Sign in</button>
+                                    <div class="form-group row">
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label for="inputPassword3" class="col-sm-12">Género: *</label>
+                                            <div class="col-sm-12">
+                                                <select class="form-control" name="gender" id="gender" required>
+                                                    <option value="">Seleccione un tipo género</option>
+                                                    <option value="f">Femenino</option>
+                                                    <option value="m">Masculino</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label for="inputPassword3" class="col-sm-12">Fecha de nacimiento: *</label>
+                                            <div class="col-sm-12">
+                                                <div class="input-group">
+                                                    <input type="text" class="datepicker form-control" id="birthdate" name="birthdate" placeholder="" aria-describedby="basic-addon3" required>
+                                                    <span class="input-group-addon" id="basic-addon3"><span class="fa fa-calendar"></span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label for="inputPassword3" class="col-sm-12">Correo electrónico: *</label>
+                                            <div class="col-sm-12">
+                                                <input type="email" class="form-control" id="email" name="email" placeholder="" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label for="inputPassword3" class="col-sm-12">Teléfono celular: *</label>
+                                            <div class="col-sm-12">
+                                                <input type="number" class="form-control" id="phone" name="phone" placeholder="" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label for="civil_status" class="col-sm-12">Estado civil: *</label>
+                                            <div class="col-sm-12">
+                                                <select class="form-control" name="civil_status" id="civil_status" required>
+                                                    <option value="">Seleccione un estado</option>
+                                                    <option value="1">Soltero(a)</option>
+                                                    <option value="2">Casado(a)</option>
+                                                    <option value="3">Union Libre</option>
+                                                    <option value="4">Divorciado(a)</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label for="education_level" class="col-sm-12">Nivel de estudios: *</label>
+                                            <div class="col-sm-12">
+                                                <select class="form-control" name="education_level" id="education_level" required>
+                                                    <option value="">Seleccione un nivel</option>
+                                                    <option value="1">Media (secundaria)</option>
+                                                    <option value="2">Tecnico o Tecnologo</option>
+                                                    <option value="3">Pregrado</option>
+                                                    <option value="4">Postgrado</option>
+                                                    <option value="5">Maestria</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label for="vehicle" class="col-sm-12">Vehiculo propio: *</label>
+                                            <div class="col-sm-12">
+                                                <select class="form-control" name="vehicle" id="vehicle" required>
+                                                    <option value="">Seleccione un estado</option>
+                                                    <option value="1">si</option>
+                                                    <option value="2">no</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h4 style="text-align: center;margin-top: 30px;">Información residencial</h4>
+                                    <div class="form-group row">
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label for="address_residence" class="col-sm-12">Dirección: *</label>
+                                            <div class="col-sm-12">
+                                                <input type="text" class="form-control" name="address_residence" id="address_residence" placeholder="" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label for="type_of_property" class="col-sm-12">Tipo de vivienda: *</label>
+                                            <div class="col-sm-12">
+                                                <select class="form-control" name="type_of_property" id="type_of_property" required>
+                                                    <option value="">Seleccione un tipo</option>
+                                                    <option value="1">Propia</option>
+                                                    <option value="2">Familiar</option>
+                                                    <option value="3">En Arriendo</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label for="time_in_property" class="col-sm-12">Tiempo de permanencia: *</label>
+                                            <div class="col-sm-12">
+                                                <select class="form-control" name="time_in_property" id="time_in_property" required>
+                                                    <option value="">Seleccione un estado</option>
+                                                    <option value="1">Menor a 1 año</option>
+                                                    <option value="2">de 1 a 5 años</option>
+                                                    <option value="3">de 5 a 10 años</option>
+                                                    <option value="4">Mayor a 10 años</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h4 style="text-align: center;margin-top: 30px;">Información laboral</h4>
+                                    <div class="form-group row">
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label for="work_activity" class="col-sm-12">Actividad laboral: *</label>
+                                            <div class="col-sm-12">
+                                                <select class="form-control" name="work_activity" id="work_activity" required>
+                                                    <option value="">Seleccione una actividad</option>
+                                                    <option value="1">Empleado(a)</option>
+                                                    <option value="2">Independiente</option>
+                                                    <option value="3">Estudiante</option>
+                                                    <option value="4">Pensionado(a)</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label for="work_type" class="col-sm-12">Tipo de actividad (opcional):</label>
+                                            <div class="col-sm-12">
+                                                <select class="form-control" name="work_type" id="work_type" required>
+                                                    <option value="">Seleccione una actividad</option>
+                                                    <option value="1">Empresario(a) Pyme</option>
+                                                    <option value="2">Emprendedor(a)</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label for="time_in_work" class="col-sm-12">Antigüedad laboral:</label>
+                                            <div class="col-sm-12">
+                                                <select class="form-control" name="time_in_work" id="time_in_work" required>
+                                                    <option value="">Seleccione una opción</option>
+                                                    <option value="">Menor a 1 año</option>
+                                                    <option value="">de 1 a 5 años</option>
+                                                    <option value="">de 5 a 10 años</option>
+                                                    <option value="">Mayor a 10 años</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h4 style="text-align: center;margin-top: 30px;">Referencia personal</h4>
+                                    <div class="form-group row">
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label for="personal_reference_first_name" class="col-sm-12">Primer nombre: *</label>
+                                            <div class="col-sm-12">
+                                                <input type="email" class="form-control" name="personal_reference_first_name" id="personal_reference_first_name" placeholder="" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label for="personal_second_name" class="col-sm-12">Segundo nombre: *</label>
+                                            <div class="col-sm-12">
+                                                <input type="email" class="form-control" name="personal_second_name" id="personal_second_name" placeholder="" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label for="personal_last_name" class="col-sm-12">Primer apellido: *</label>
+                                            <div class="col-sm-12">
+                                                <input type="email" class="form-control" name="personal_last_name" id="personal_last_name" placeholder="" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label for="personal_second_last_name" class="col-sm-12">Segundo apellido: *</label>
+                                            <div class="col-sm-12">
+                                                <input type="email" class="form-control" name="personal_second_last_name" id="personal_second_last_name" placeholder="" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label for="personal_reference_" class="col-sm-12">Teléfono celular: *</label>
+                                            <div class="col-sm-12">
+                                                <input type="number" class="form-control" id="personal_reference_phone" name="personal_reference_phone" placeholder="" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label for="personal_second_city" class="col-sm-12">Ciudad: *</label>
+                                            <div class="col-sm-12">
+                                                <input type="email" class="form-control" name="personal_second_city" id="personal_second_city" placeholder="" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h4 style="text-align: center;margin-top: 30px;">Información financiera</h4>
+                                    <div class="form-group row">
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label for="mensual_outgoings" class="col-sm-12">Total gastos mensuales: *</label>
+                                            <div class="col-sm-12">
+                                                <input type="email" class="form-control" name="mensual_outgoings" id="mensual_outgoings" placeholder="" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label for="mensual_incomings" class="col-sm-12">Ingresos netos mensuales: *</label>
+                                            <div class="col-sm-12">
+                                                <input type="email" class="form-control" name="mensual_incomings" id="mensual_incomings" placeholder="" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label for="favorite_bank" class="col-sm-12">Banco de su preferencia para realizar pagos: *</label>
+                                            <div class="col-sm-12">
+                                                <select class="form-control" name="favorite_bank" id="favorite_bank" required>
+                                                    <option value="">Seleccione una opción</option>
+                                                    <option value="1">Bancolombia</option>
+                                                    <option value="2">Davivienda</option>
+                                                    <option value="3">BBVA</option>
+                                                    <option value="4">Puntos Baloto</option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
                                 </form>
@@ -260,6 +498,14 @@
     </div>
     <script src="{% static 'js/fb.js' %}" charset="utf-8"></script>
     <script src="{% static 'js/index.js' %}" charset="utf-8"></script>
+    <script src="{% static 'js/bootstrap-datepicker.min.js' %}" charset="utf-8"></script>
+    <script src="{% static 'js/jquery.validate.min.js' %}" charset="utf-8"></script>
+
+    <script src="js/bootstrap-datepicker.min.js" charset="utf-8"></script>
+    <script src="js/jquery.validate.min.js" charset="utf-8"></script>
+    <script src="js/fb.js" charset="utf-8"></script>
+    <script src="js/index.js" charset="utf-8"></script>
+
     <script type="text/javascript">
     $(function() {
         var subtotal = {{total}};

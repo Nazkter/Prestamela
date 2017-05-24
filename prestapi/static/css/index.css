@@ -98,11 +98,15 @@ footer{
     width: 350px;
     padding: 10px 30px 5px;
 }
-.fb-loading-icon, .li-loading-icon, .fb-completed-icon, .li-completed-icon{
+.fb-loading-icon, .fb-completed-icon, .fb-error-icon, .li-loading-icon, .li-completed-icon, .li-error-icon{
     padding: 10px 30px 5px;
     display: none;
 }
-.fb-completed-icon, .li-completed-icon{
+.fb-completed-icon, .li-completed-icon,{
     color: #94c947;
+    font-size: 30px;
+}
+.fb-error-icon, .li-error-icon,{
+    color: #f44336;
     font-size: 30px;
 }

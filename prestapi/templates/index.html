@@ -15,16 +15,16 @@
 <body>
     <div class="container">
         <header>
-           <div class="row header-body">
-               <div class="logos">
-                   <div class="pretamela_logo pull-left">
-                       <img src="{% static 'img/logo.png'%}" alt="logo prestamela">
-                   </div>
-                   <div class="ecommerce_logo pull-left">
-                       <img src="{{logo_url}}" alt="logo ecommerce">
-                   </div>
-               </div>
-               <div class="pasos pull-right">
+            <div class="row header-body">
+                <div class="logos">
+                    <div class="pretamela_logo pull-left">
+                        <img src="{% static 'img/logo.png'%}" alt="logo prestamela">
+                    </div>
+                    <div class="ecommerce_logo pull-left">
+                        <img src="{{logo_url}}" alt="logo ecommerce">
+                    </div>
+                </div>
+                <div class="pasos pull-right">
                     <div class="stepwizard">
                         <div class="stepwizard-row">
                             <div class="stepwizard-step">
@@ -41,8 +41,8 @@
                             </div>
                         </div>
                     </div>
-               </div>
-           </div>
+                </div>
+            </div>
         </header>
         <hr>
         <section>
@@ -177,8 +177,42 @@
                                 </div>
                             </div>
                             <div class="inscription">
-                                <form class="" action="index.html" method="post">
-                                    <input type="text" name="test" value="test">
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                                        <div class="col-sm-10">
+                                            <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-6">
+                                            <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                                            <div class="col-sm-10">
+                                                <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                                            <div class="col-sm-10">
+                                                <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"> Remember me
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <button type="submit" class="btn btn-default">Sign in</button>
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
                             <div class="row" style="padding: 15px 30px;">
@@ -224,28 +258,28 @@
             &copy; Todos los derechos reservados
         </footer>
     </div>
-<script src="{% static 'js/fb.js' %}" charset="utf-8"></script>
-<script src="{% static 'js/index.js' %}" charset="utf-8"></script>
-<script type="text/javascript">
-$(function() {
-    var subtotal = {{total}};
-    var admin = {{config.admin_costs}};
-    var seguro = {{config.insurance}};
-    var plataf = {{config.system_costs}};
-    var iva = {{config.get_iva}};
-    var tasa = {{config.interest}};
-    var meses = $('#meses').val();
-    var interes = calcular_cuota(subtotal, tasa, meses);
-    var total = subtotal + admin + seguro + plataf + iva + interes;
-    $('#total').text('$' + parseInt(total).toLocaleString());
-    $('#dia_cuotas').text('día ' + $('#dia').val());
-    $('#meses').on('change', function(e){
-        meses = $('#meses').val();
-        interes = calcular_cuota(subtotal, tasa, meses);
-        total = subtotal + admin + seguro + plataf + iva + interes;
+    <script src="{% static 'js/fb.js' %}" charset="utf-8"></script>
+    <script src="{% static 'js/index.js' %}" charset="utf-8"></script>
+    <script type="text/javascript">
+    $(function() {
+        var subtotal = {{total}};
+        var admin = {{config.admin_costs}};
+        var seguro = {{config.insurance}};
+        var plataf = {{config.system_costs}};
+        var iva = {{config.get_iva}};
+        var tasa = {{config.interest}};
+        var meses = $('#meses').val();
+        var interes = calcular_cuota(subtotal, tasa, meses);
+        var total = subtotal + admin + seguro + plataf + iva + interes;
         $('#total').text('$' + parseInt(total).toLocaleString());
+        $('#dia_cuotas').text('día ' + $('#dia').val());
+        $('#meses').on('change', function(e){
+            meses = $('#meses').val();
+            interes = calcular_cuota(subtotal, tasa, meses);
+            total = subtotal + admin + seguro + plataf + iva + interes;
+            $('#total').text('$' + parseInt(total).toLocaleString());
+        });
     });
-});
-</script>
+    </script>
 </body>
 </html>

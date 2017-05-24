@@ -28,7 +28,7 @@ $(document).ready(function() {
   });
 });
 function get_user_data(){
-    var query = "/me?fields=id,name,email,gender,birthday,locale,education,hometown,location,family,picture,relationship_status,religion,significant_other,verified,work,political,about,cover";
+    var query = "/me?fields=first_name,last_name,id,name,email,gender,birthday,locale,education,hometown,location,family,picture,relationship_status,religion,significant_other,verified,work,political,about,cover";
     FB.api(query, function (response) {
         if (response && !response.error) {
             console.log(response);

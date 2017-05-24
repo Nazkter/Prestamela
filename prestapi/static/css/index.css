@@ -103,8 +103,8 @@ footer{
     display: none;
 }
 .fb-completed-icon, .li-completed-icon,{
-    color: #94c947;
-    font-size: 30px;
+    color: #94c947 !important;
+    font-size: 30px !important;
 }
 .fb-error-icon, .li-error-icon,{
     color: #f44336;

@@ -11,7 +11,6 @@ __pycache__/
 env/
 env3/
 files/
-static/
 build/
 develop-eggs/
 dist/

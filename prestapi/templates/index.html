@@ -15,7 +15,6 @@
 </head>
 <body>
     <div class="container">
-        <form>{% csrf_token %}</form>
         <header>
             <div class="row header-body">
                 <div class="logos">
@@ -182,7 +181,8 @@
                                 <div class="alert alert-danger" id="form_error_msg"></div>
                                 <h3>Formulario de solicitud</h3>
                                 <p>Por favor complete el siguiente formulario con la información solicitada, todos los campos son necesarios para enviar la solicitud</p>
-                                <form class="form-horizontal">
+                                <form class="form-horizontal" id="request_form">
+                                    {% csrf_token %}
                                     <h4 style="text-align: center;margin-top: 30px;">Información básica</h4>
                                     <div class="form-group row">
                                         <div class="col-md-6 col-sm-6 col-xs-12">

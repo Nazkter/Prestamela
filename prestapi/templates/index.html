@@ -219,7 +219,7 @@
                                             <label for="inputPassword3" class="col-sm-12">Fecha de expedición: *</label>
                                             <div class="col-sm-12">
                                                 <div class="input-group">
-                                                    <input type="text" class="datepicker form-control" id="expedition_date" name="expedition_date" placeholder="" aria-describedby="basic-addon2" required value="2009-18-12">
+                                                    <input type="text" class="datepicker form-control" id="expedition_date" name="expedition_date" placeholder="" aria-describedby="basic-addon2" required value="2009-12-18">
                                                     <span class="input-group-addon" id="basic-addon2"><span class="fa fa-calendar"></span></span>
                                                 </div>
                                             </div>
@@ -348,9 +348,9 @@
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <label for="work_type" class="col-sm-12">Tipo de actividad (opcional):</label>
                                             <div class="col-sm-12">
-                                                <select class="form-control" name="work_type" id="work_type">
+                                                <select class="form-control" name="work_type" id="work_type" required>
                                                     <option value="">Seleccione una actividad</option>
-                                                    <option value="1">Empresario(a) Pyme</option>
+                                                    <option value="1" selected>Empresario(a) Pyme</option>
                                                     <option value="2">Emprendedor(a)</option>
                                                 </select>
                                             </div>
@@ -389,9 +389,9 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <label for="personal_second_city" class="col-sm-12">Ciudad: *</label>
+                                            <label for="personal_reference_city" class="col-sm-12">Ciudad: *</label>
                                             <div class="col-sm-12">
-                                                <input type="text" class="form-control" name="personal_second_city" id="personal_second_city" placeholder="" required value="Bogotá">
+                                                <input type="text" class="form-control" name="personal_reference_city" id="personal_reference_city" placeholder="" required value="Bogotá">
                                             </div>
                                         </div>
                                     </div>
@@ -470,7 +470,6 @@
     function ajax_get_score(){
         data = {
             'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val(),
-
             'document_type': $('#document_type').val(),
             'document_id': $('#document_id').val(),
             'first_name': $('#first_name').val(),

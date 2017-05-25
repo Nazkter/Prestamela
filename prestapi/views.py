@@ -53,7 +53,7 @@ def ajax_get_score(request):
     birthdate = request.POST.get('birthdate', '')
     gender = request.POST.get('gender', '')
     email = request.POST.get('email', '')
-    phone = request.POST.get('phone', '')
+    phone = int(request.POST.get('phone', ''))
     civil_status = request.POST.get('civil_status', '')
     address_residence = request.POST.get('address_residence', '')
     type_of_property = request.POST.get('type_of_property', '')

@@ -461,6 +461,8 @@
                     </div>
                     <div id="autenticacion" style="display:none;">
                         <div class="panel-body">
+                            <div id="verification_error_msg" class="alert alert-danger"></div>
+                            <div id="verification_success_msg" class="alert alert-success"></div>
                             <p>
                                 Para que podamos autenticar que tú eres el dueño de la
                                 cuenta de identificación, te enviaremos un código de 4
@@ -468,17 +470,17 @@
                             </p>
                             <p id="phone-p">
                                 Ingresa tu número de telefono celular:
-                                <input type="text" id="phone_number">
-                                <button id="sms-btn" type="button" class="btn btn-default btn" disabled>Enviar Código</button>
+                                <input type="text" id="phone_number" class="form-control">
+                                <button id="sms-btn" type="button" class="btn btn-default btn form-control" disabled>Enviar Código</button>
                             </p>
                             <p id="confirm-sms-p" style="display:none;">
                                 Ingresa el codigo de confirmación que llegó a tu telefono celular:
-                                <input type="text" id="confirmation_code">
-                                <button id="finish-btn" type="button" class="btn btn-default btn" disabled>Finalizar solicitud</button>
+                                <input type="text" id="confirmation_code" class="form-control">
+                                <button id="finish-btn" type="button" class="btn btn-default btn form-control" disabled>Finalizar solicitud</button>
                             </p>
-                            <p id="final-p" style="display:none;">
+                            <div id="final-p" class="alert alert-success">
                                 El usuario ha sido confirmado, Pronto nos pondremos con contacto contigo.
-                            </p>
+                            </div>
                         </div>
                     </div>
                 </div>

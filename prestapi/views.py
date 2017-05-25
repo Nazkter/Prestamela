@@ -97,11 +97,12 @@ def ajax_get_score(request):
     # it makes the POST petition to the web service
     try:
         r = requests.post(url = url, data = data)
+        print('<|><|><|><|><|><|><|><|><|><|><|><|>')
+        print(r)
+        print('<|><|><|><|><|><|><|><|><|><|><|><|>')
     except:
         raise
-    print(r)
     if r:
         return JsonResponse(r.json());
     else:
-        return JsonResponse({"status": "error"});
-    
+        return JsonResponse({"response": r.text});

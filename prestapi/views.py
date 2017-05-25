@@ -100,4 +100,8 @@ def ajax_get_score(request):
     except:
         raise
     print(r)
-    return JsonResponse(r.json());
+    if(r){
+        return JsonResponse(r.json());
+    }else{
+        return JsonResponse({"status": "error"});
+    }

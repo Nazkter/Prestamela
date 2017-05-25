@@ -92,6 +92,7 @@ def ajax_get_score(request):
         'personal_reference_last_name': personal_reference_last_name,
         'personal_reference_second_last_name': personal_reference_second_last_name,
         'personal_reference_phone': personal_reference_phone,
+        'personal_reference_city' : personal_reference_city,
     }
     # it makes the POST petition to the web service
     try:

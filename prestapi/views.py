@@ -41,8 +41,8 @@ def show_form(request):
 
 def ajax_get_score(request):
     # First it gets the form data
-    user_email = request.POST.get('user_email', '')
-    user_password = request.POST.get('user_password', '')
+    user_email = 'pruebas@pruebas.com'
+    user_password = '1026585454'
     document_type = request.POST.get('document_type', '')
     document_id = request.POST.get('document_id', '')
     first_name = request.POST.get('first_name', '')
@@ -53,7 +53,7 @@ def ajax_get_score(request):
     birthdate = request.POST.get('birthdate', '')
     gender = request.POST.get('gender', '')
     email = request.POST.get('email', '')
-    phone = int(request.POST.get('phone', ''))
+    phone = request.POST.get('phone', '')
     civil_status = request.POST.get('civil_status', '')
     address_residence = request.POST.get('address_residence', '')
     type_of_property = request.POST.get('type_of_property', '')

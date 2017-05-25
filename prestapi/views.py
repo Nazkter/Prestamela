@@ -67,7 +67,7 @@ def ajax_get_score(request):
 
     # Then it set the required data for the credit score web service
     url = 'http://dev.bio.credit/integration/prestame/give-a-score'
-    post_fields = {
+    data = {
         'user_email': user_email,
         'user_password': user_password,
         'document_type': document_type,
@@ -94,7 +94,7 @@ def ajax_get_score(request):
     }
     # it makes the POST petition to the web service
     try:
-        r = requests.post(url = API_ENDPOINT, data = data)
+        r = requests.post(url = url, data = data)
     except:
         raise
     print(json)

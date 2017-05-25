@@ -2,8 +2,8 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from prestapi.models import Config, Client
 import json
-from urllib.parse import urlencode
-from urllib.request import Request, urlopen
+import requests
+
 
 
 def show_privacy_policy(request):
@@ -93,12 +93,8 @@ def ajax_get_score(request):
         'personal_reference_phone': personal_reference_phone,
     }
     # it makes the POST petition to the web service
-    request = Request(url, urlencode(post_fields).encode())
     try:
-        one = urlopen(request)
-        two = one.read()
-        three = two.decode()
-        json = urlopen(request).read().decode()
+        r = requests.post(url = API_ENDPOINT, data = data)
     except:
         raise
     print(json)

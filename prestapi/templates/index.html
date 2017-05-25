@@ -15,6 +15,7 @@
 </head>
 <body>
     <div class="container">
+        <form>{% csrf_token %}</form>
         <header>
             <div class="row header-body">
                 <div class="logos">
@@ -491,6 +492,7 @@
     <script type="text/javascript">
     function ajax_get_score(){
         data = {
+            'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val(),
             'user_email': 'Test_user_email',
             'user_password': 'Test_user_password',
             'document_type': 'Test_document_type',

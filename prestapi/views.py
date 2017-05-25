@@ -64,6 +64,7 @@ def ajax_get_score(request):
     personal_reference_last_name = request.POST.get('personal_reference_last_name', '')
     personal_reference_second_last_name = request.POST.get('personal_reference_second_last_name', '')
     personal_reference_phone = request.POST.get('personal_reference_phone', '')
+    personal_reference_city = request.POST.get('personal_reference_city', '')
 
     # Then it set the required data for the credit score web service
     url = 'http://dev.bio.credit/integration/prestame/give-a-score'

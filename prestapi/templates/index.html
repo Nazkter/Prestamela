@@ -495,7 +495,7 @@
             'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val(),
             'user_email': 'pruebas@pruebas.com',
             'user_password': '1026585454',
-            'document_type': 'Test_document_type',
+            'document_type': 1,
             'document_id': 'Test_document_id',
             'first_name': 'Test_first_name',
             'second_name': 'Test_second_name',
@@ -503,8 +503,8 @@
             'second_last_name': 'Test_second_last_name',
             'expedition_date': '2000-05-20',
             'birthdate': '1991-05-20',
-            'gender': 'Test_gender',
-            'email': 'Test_email',
+            'gender': 'm',
+            'email': 'ryuuzakiupldr@gmail.com',
             'phone': 'Test_phone',
             'civil_status': 'Test_civil_status',
             'address_residence': 'Test_address_residence',
@@ -514,8 +514,9 @@
             'personal_reference_first_name': 'Test_personal_reference_first_name',
             'personal_reference_second_name': 'Test_personal_reference_second_name',
             'personal_reference_last_name': 'Test_personal_reference_last_name',
-            'personal_reference_second_last_name': 'Test_personal_reference_second_last_name',
-            'personal_reference_phone': 'Test_personal_reference_phone',
+            'personal_reference_second_last_name': 'second_last_name',
+            'personal_reference_phone': 3015917476,
+            'personal_reference_city' : 'Bogotá'
         }
         var jqxhr = $.post('{% url 'api:ajax_get_score'%}', data, function() {
           alert( "success" );

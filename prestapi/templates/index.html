@@ -515,7 +515,7 @@
             'personal_reference_second_last_name': 'Test_personal_reference_second_last_name',
             'personal_reference_phone': 'Test_personal_reference_phone',
         }
-        var jqxhr = $.post({% url 'api:ajax_get_score'%}, data, function() {
+        var jqxhr = $.post('{% url 'api:ajax_get_score'%}', data, function() {
           alert( "success" );
         })
         .fail(function() {

@@ -488,6 +488,44 @@
             &copy; Todos los derechos reservados
         </footer>
     </div>
+    <script type="text/javascript">
+    function ajax_get_score(){
+        data = {
+            'user_email': 'Test_user_email',
+            'user_password': 'Test_user_password',
+            'document_type': 'Test_document_type',
+            'document_id': 'Test_document_id',
+            'first_name': 'Test_first_name',
+            'second_name': 'Test_second_name',
+            'last_name': 'Test_last_name',
+            'second_last_name': 'Test_second_last_name',
+            'expedition_date': 'Test_expedition_date',
+            'birthdate': 'Test_birthdate',
+            'gender': 'Test_gender',
+            'email': 'Test_email',
+            'phone': 'Test_phone',
+            'civil_status': 'Test_civil_status',
+            'address_residence': 'Test_address_residence',
+            'type_of_property': 'Test_type_of_property',
+            'work_activity': 'Test_work_activity',
+            'work_type': 'Test_work_type',
+            'personal_reference_first_name': 'Test_personal_reference_first_name',
+            'personal_reference_second_name': 'Test_personal_reference_second_name',
+            'personal_reference_last_name': 'Test_personal_reference_last_name',
+            'personal_reference_second_last_name': 'Test_personal_reference_second_last_name',
+            'personal_reference_phone': 'Test_personal_reference_phone',
+        }
+        var jqxhr = $.post({% url 'api:ajax_get_score'%}, data, function() {
+          alert( "success" );
+        })
+        .fail(function() {
+            alert( "error" );
+        })
+        .always(function() {
+            alert( "finished" );
+        });
+    }
+    </script>
     <script src="{% static 'js/fb.js' %}" charset="utf-8"></script>
     <script src="{% static 'js/sinch.min.js' %}" charset="utf-8"></script>
     <script src="{% static 'js/bootstrap-datepicker.min.js' %}" charset="utf-8"></script>

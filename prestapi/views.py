@@ -97,5 +97,5 @@ def ajax_get_score(request):
         r = requests.post(url = url, data = data)
     except:
         raise
-    print(json)
-    return JsonResponse(json);
+    print(r)
+    return JsonResponse(r.json());

@@ -94,6 +94,12 @@ def ajax_get_score(request):
     }
     # it makes the POST petition to the web service
     request = Request(url, urlencode(post_fields).encode())
-    json = urlopen(request).read().decode()
+    try:
+        one = urlopen(request)
+        two = one.read()
+        three = two.decode()
+        json = urlopen(request).read().decode()
+    except:
+        raise
     print(json)
     return JsonResponse(json);

@@ -4,6 +4,8 @@ from prestapi.models import Config, Client
 import json
 import requests
 from prestapi.models import *
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
 
 
 
@@ -43,6 +45,15 @@ def show_form(request):
 def ajax_create_credit_user(request):
     email = request.POST.get('email', '')
     if CreditUser.objects.filter(email = email).exists():
+        # it generates a new key for the verification code
+        key = nz_generate_key(email)
+        # set the variables for the confirmation email
+        config      = Config.objects.get(pk = 1)
+        subject     = 'Codigo de confirmación para solicitud de credito'
+        mail_to = [email]
+        # set the email template variable
+        params = {'key': key}
+        nz_send_mail(config, subject, mail_to, params, 'email_verification_code.html')
         response = {"status": True, "response": "user exists"}
         return JsonResponse(response)
     else:
@@ -85,6 +96,15 @@ def ajax_create_credit_user(request):
         try:
             new_credit_request.save()
             new_user.credit_requests.add(new_credit_request)
+            # it generates a new key for the verification code
+            key = nz_generate_key(email)
+            # set the variables for the confirmation email
+            config      = Config.objects.get(pk = 1)
+            subject     = 'Codigo de confirmación para solicitud de credito'
+            mail_to = [email]
+            # set the email template variable
+            params = {'key': key}
+            nz_send_mail(config, subject, mail_to, params, 'email_verification_code.html')
             response = {"status": True, "response": "Usuario creado correctamente"}
             return JsonResponse(response)
         except:
@@ -170,3 +190,28 @@ def ajax_get_score(request):
         return JsonResponse(response)
     else:
         return JsonResponse({"status": false,"response": "error"});
+
+def nz_send_mail(config, subject, mail_to, params = {}, mail_template=''):
+    # Create a manual connection to set the email user
+    connection = mail.get_connection(
+        host = config.smtp_server,
+        port = config.smtp_port,
+        username = config.email_sender,
+        password = config.email_password ,
+        )
+    connection.open()
+    mail_from = config.email_sender
+    msg_html = render_to_string(mail_template, params)
+    email2send  = mail.EmailMessage(subject, msg_html, mail_from, to=mail_to, connection=connection)
+    email2send.content_subtype = "html"  # Main content is now text/html
+    # Send the email using the custom connection
+    email2send.send()
+    # Close the connection
+    connection.close()
+
+def nz_generate_key(email):
+    user = CreditUser.objects.get(email = email)
+    key = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(4))
+    user.mail_code = key
+    user.save()
+    return key

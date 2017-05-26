@@ -9,6 +9,11 @@ class Config(models.Model):
     interest        = models.FloatField(null = False, default = 0.018769)
     iva             = models.FloatField(null = False, default = 0.19)
 
+    smtp_server     = models.CharField(max_length = 50, default = '')
+    smtp_port       = models.CharField(max_length = 4, default = '')
+    email_sender    = models.CharField(max_length = 60, default = '')
+    email_password  = models.CharField(max_length = 50, default = '')
+
     class Meta:
         verbose_name_plural = 'Configuraciones'
 

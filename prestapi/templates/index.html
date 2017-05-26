@@ -546,7 +546,7 @@
             'mensual_incomings' :$('#mensual_incomings').val()
             'favorite_bank' :$('#favorite_bank').val()
         }
-        var jqxhr = $.post('{% url 'api:create_credit_user'%}', data, function(r) {
+        var jqxhr = $.post('{% url 'api:ajax_create_credit_user'%}', data, function(r) {
             if(r.status){
                 $('.ident-btn').removeClass('btn-primary');
                 $('.ident-btn').addClass('btn-default');

@@ -192,16 +192,16 @@ def ajax_get_score(request):
     if r:
         score = r.json().score
         if   score <  500:
-            response = {"status": true, "response": "denied"}
+            response = {"status": True, "response": "denied"}
         elif score >= 500 and score < 700:
-            response = {"status": true, "response": "pending"}
+            response = {"status": True, "response": "pending"}
         elif score >=  700:
-            response = {"status": true, "response": "approved"}
+            response = {"status": True, "response": "approved"}
         else:
-            response = {"status": false, "response": "error"}
+            response = {"status": False, "response": "Server error"}
         return JsonResponse(response)
     else:
-        return JsonResponse({"status": false,"response": "error"});
+        return JsonResponse({"status": False,"response": "score API error"});
 
 def nz_send_mail(config, subject, mail_to, params = {}, mail_template=''):
     # Create a manual connection to set the email user

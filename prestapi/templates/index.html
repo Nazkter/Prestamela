@@ -541,9 +541,9 @@
             'personal_reference_last_name': $('#personal_reference_last_name').val(),
             'personal_reference_second_last_name': $('#personal_reference_second_last_name').val(),
             'personal_reference_phone': $('#personal_reference_phone').val(),
-            'personal_reference_city' :$('#personal_reference_city').val()
-            'mensual_outgoings' :$('#mensual_outgoings').val()
-            'mensual_incomings' :$('#mensual_incomings').val()
+            'personal_reference_city' :$('#personal_reference_city').val(),
+            'mensual_outgoings' :$('#mensual_outgoings').val(),
+            'mensual_incomings' :$('#mensual_incomings').val(),
             'favorite_bank' :$('#favorite_bank').val()
         }
         var jqxhr = $.post('{% url 'api:ajax_create_credit_user'%}', data, function(r) {

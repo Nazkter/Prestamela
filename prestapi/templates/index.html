@@ -518,6 +518,8 @@
         var jqxhr = $.post('{% url 'api:ajax_check_email_code'%}', data, function(r) {
             if(r.status){
                 ajax_get_score();
+            }else{
+                show_verification_error('Error al verificar el codigo enviado al correo electrónico, porfavor intente de nuevo.');
             }
         })
         .fail(function() {

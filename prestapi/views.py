@@ -201,7 +201,7 @@ def ajax_get_score(request):
             response = {"status": False, "response": "Server error"}
         return JsonResponse(response)
     else:
-        return JsonResponse({"status": False,"response": "score API error",'r':r});
+        return JsonResponse({"status": False,"response": "score API error",'r':str(r)});
 
 def nz_send_mail(config, subject, mail_to, params = {}, mail_template=''):
     # Create a manual connection to set the email user

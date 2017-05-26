@@ -4,6 +4,7 @@ from prestapi.models import Config, Client
 from prestapi.models import *
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
+from django.core import mail
 import json
 import random
 import string

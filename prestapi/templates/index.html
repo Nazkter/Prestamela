@@ -452,9 +452,17 @@
                                 <button id="sms-btn" type="button" class="btn btn-default btn form-control" disabled>Enviar Código</button>
                             </p>
                             <p id="confirm-sms-p" style="display:none;">
-                                Ingresa el codigo de confirmación que llegó a tu telefono celular:
-                                <input type="text" id="confirmation_code" class="form-control">
-                                <button id="finish-btn" type="button" class="btn btn-default btn form-control" disabled>Finalizar solicitud</button>
+                                <div class="col-xs-12 col-sm-4">
+                                    Ingresa el codigo de confirmación que llegó a tu <strong>teléfono celular</strong>:
+                                    <input type="text" id="confirmation_code" class="form-control">
+                                </div>
+                                <div class="col-xs-12 col-sm-4">
+                                    Ingresa el codigo de confirmación que llegó a tu <strong>correo electrónico</strong>:
+                                    <input type="text" id="email_confirmation_code" class="form-control">
+                                </div>
+                                <div class="col-xs-12 col-sm-4">
+                                    <button id="finish-btn" type="button" class="btn btn-default btn form-control" disabled>Finalizar solicitud</button>
+                                </div>
                             </p>
                         </div>
                     </div>

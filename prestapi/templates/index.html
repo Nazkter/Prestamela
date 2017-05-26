@@ -508,11 +508,12 @@
             //alert( "error" );
         });
     }
-    function check_email_code() {
+    function check_email_code(sms_code) {
         data = {
             'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val(),
             'email_confirmation_code': $('input#email_confirmation_code').val(),
             'email': $('input#email').val(),
+            'sms_code': sms_code,
         }
         var jqxhr = $.post('{% url 'api:ajax_check_email_code'%}', data, function(r) {
             if(r.status){

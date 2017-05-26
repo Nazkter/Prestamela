@@ -118,8 +118,11 @@ def ajax_create_credit_user(request):
 def ajax_check_email_code(request):
     email_confirmation_code = request.POST.get('email_confirmation_code', '')
     email = request.POST.get('email', '')
+    sms_code = request.POST.get('sms_code', '')
     if CreditUser.objects.filter(email = email).exists():
         user = CreditUser.objects.get(email = email)
+        user.sms_code = sms_code
+        user.save()
         if user.mail_code == email_confirmation_code:
             response = {"status": True, "response": "Código correcto"}
         else:
@@ -190,7 +193,7 @@ def ajax_get_score(request):
     except:
         raise
     if r:
-        score = r.json().score
+        score = int(r.json()['score'])
         if   score <  500:
             response = {"status": True, "response": "denied"}
         elif score >= 500 and score < 700:

@@ -39,6 +39,62 @@ def show_form(request):
     return JsonResponse( response )
 
 
+def ajax_create_credit_user(request):
+    email = request.POST.get('email', '')
+    if CreditUser.objects.filter(email = email).exists():
+        response = {"status": True, "response": "user exists"}
+        return JsonResponse(response)
+    else:
+        new_user = CreditUser(email = email)
+        new_user.csrfmiddlewaretoken = request.POST.get('csrfmiddlewaretoken', '')
+        new_user.document_type = request.POST.get('document_type', '')
+        new_user.document_id = request.POST.get('document_id', '')
+        new_user.first_name = request.POST.get('first_name', '')
+        new_user.second_name = request.POST.get('second_name', '')
+        new_user.last_name = request.POST.get('last_name', '')
+        new_user.second_last_name = request.POST.get('second_last_name', '')
+        new_user.expedition_date = request.POST.get('expedition_date', '')
+        new_user.birthdate = request.POST.get('birthdate', '')
+        new_user.gender = request.POST.get('gender', '')
+        new_user.phone = request.POST.get('phone', '')
+        new_user.civil_status = request.POST.get('civil_status', '')
+        new_user.address_residence = request.POST.get('address_residence', '')
+        new_user.type_of_property = request.POST.get('type_of_property', '')
+        new_user.work_activity = request.POST.get('work_activity', '')
+        new_user.work_type = request.POST.get('work_type', '')
+        new_user.personal_reference_first_name = request.POST.get('personal_reference_first_name', '')
+        new_user.personal_reference_second_name = request.POST.get('personal_reference_second_name', '')
+        new_user.personal_reference_last_name = request.POST.get('personal_reference_last_name', '')
+        new_user.personal_reference_second_last_name = request.POST.get('personal_reference_second_last_name', '')
+        new_user.personal_reference_phone = request.POST.get('personal_reference_phone', '')
+        new_user.personal_reference_city = request.POST.get('personal_reference_city', '')
+        new_user.mensual_outgoings = request.POST.get('mensual_outgoings', '')
+        new_user.mensual_incomings = request.POST.get('mensual_incomings', '')
+        new_user.favorite_bank = request.POST.get('favorite_bank', '')
+        try:
+            new_user.save()
+        except:
+            response = {"status": False, "response": "No se puede guardar el usuario."}
+            return JsonResponse(response)
+
+        months = request.POST.get('months', '')
+        pay_day = request.POST.get('pay_day', '')
+        price = request.POST.get('price', '')
+        new_credit_request = Request(price = price, months = months, pay_day = pay_day)
+        try:
+            new_credit_request.save()
+            new_user.credit_requests.add(new_credit_request)
+            response = {"status": True, "response": "Usuario creado correctamente"}
+            return JsonResponse(response)
+        except:
+            response = {"status": False, "response": "No se puede crear la petición."}
+            return JsonResponse(response)
+
+
+def ajax_check_email_code(request):
+    email_confirmation_code = request.POST.get('email_confirmation_code', '')
+    pass
+
 def ajax_get_score(request):
     # First it gets the form data
     user_email = 'pruebas@pruebas.com'

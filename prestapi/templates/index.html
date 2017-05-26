@@ -227,7 +227,7 @@
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <label for="inputPassword3" class="col-sm-12">Género: *</label>
+                                            <label for="gender" class="col-sm-12">Género: *</label>
                                             <div class="col-sm-12">
                                                 <select class="form-control" name="gender" id="gender" required>
                                                     <option value="">Seleccione un tipo género</option>
@@ -237,7 +237,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <label for="inputPassword3" class="col-sm-12">Fecha de nacimiento: *</label>
+                                            <label for="birthdate" class="col-sm-12">Fecha de nacimiento: *</label>
                                             <div class="col-sm-12">
                                                 <div class="input-group">
                                                     <input type="text" class="datepicker form-control" id="birthdate" name="birthdate" placeholder="" aria-describedby="basic-addon3" required value="1991-12-11">
@@ -248,13 +248,13 @@
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <label for="inputPassword3" class="col-sm-12">Correo electrónico: *</label>
+                                            <label for="email" class="col-sm-12">Correo electrónico: *</label>
                                             <div class="col-sm-12">
                                                 <input type="email" class="form-control" id="email" name="email" placeholder="" required value="ryuuzakiupldr@gmail.com">
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <label for="inputPassword3" class="col-sm-12">Teléfono celular: *</label>
+                                            <label for="phone" class="col-sm-12">Teléfono celular: *</label>
                                             <div class="col-sm-12">
                                                 <input type="number" class="form-control" id="phone" name="phone" placeholder="" required value="3015917459">
                                             </div>
@@ -462,7 +462,6 @@
             </div>
         </section>
         <footer>
-            <hr>
             &copy; Todos los derechos reservados
         </footer>
     </div>
@@ -494,14 +493,70 @@
             'personal_reference_city' :$('#personal_reference_city').val()
         }
         console.log(data);
-        var jqxhr = $.post('{% url 'api:ajax_get_score'%}', data, function() {
-          alert( "success" );
+        var jqxhr = $.post('{% url 'api:ajax_get_score'%}', data, function(r) {
+            manage_score_response(r);
         })
         .fail(function() {
-            alert( "error" );
+            //alert( "error" );
+        });
+    }
+    function check_email_code() {
+        data = {
+            'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val(),
+            'email_confirmation_code': $('input#email_confirmation_code').val()
+        }
+        var jqxhr = $.post('{% url 'api:ajax_check_email_code'%}', data, function(r) {
+            if(r.status){
+                ajax_get_score();
+            }
         })
-        .always(function() {
-            alert( "finished" );
+        .fail(function() {
+            //alert( "error" );
+        });
+    }
+    function create_new_user(){
+        data = {
+            'months': $('#meses').val(),
+            'pay_day': $('#dia').val(),
+            'price': '{{total}}',
+            'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val(),
+            'document_type': $('#document_type').val(),
+            'document_id': $('#document_id').val(),
+            'first_name': $('#first_name').val(),
+            'second_name': $('#second_name').val(),
+            'last_name': $('#last_name').val(),
+            'second_last_name': $('#second_last_name').val(),
+            'expedition_date': $('#expedition_date').val(),
+            'birthdate': $('#birthdate').val(),
+            'gender': $('#gender').val(),
+            'email': $('#email').val(),
+            'phone': $('#phone').val(),
+            'civil_status': $('#civil_status').val(),
+            'address_residence': $('#address_residence').val(),
+            'type_of_property': $('#type_of_property').val(),
+            'work_activity': $('#work_activity').val(),
+            'work_type': $('#work_type').val(),
+            'personal_reference_first_name': $('#personal_reference_first_name').val(),
+            'personal_reference_second_name': $('#personal_reference_second_name').val(),
+            'personal_reference_last_name': $('#personal_reference_last_name').val(),
+            'personal_reference_second_last_name': $('#personal_reference_second_last_name').val(),
+            'personal_reference_phone': $('#personal_reference_phone').val(),
+            'personal_reference_city' :$('#personal_reference_city').val()
+            'mensual_outgoings' :$('#mensual_outgoings').val()
+            'mensual_incomings' :$('#mensual_incomings').val()
+            'favorite_bank' :$('#favorite_bank').val()
+        }
+        var jqxhr = $.post('{% url 'api:create_credit_user'%}', data, function(r) {
+            if(r.status){
+                $('.ident-btn').removeClass('btn-primary');
+                $('.ident-btn').addClass('btn-default');
+                $('.auten-btn').removeClass('btn-default');
+                $('.auten-btn').addClass('btn-primary');
+                $('#autenticacion').slideDown();
+            }
+        })
+        .fail(function() {
+            //alert( "error" );
         });
     }
     </script>

@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from prestapi.models import Config, Client
 import json
 import requests
-from models import *
+from prestapi.models import *
 
 
 

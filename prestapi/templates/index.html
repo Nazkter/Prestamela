@@ -511,7 +511,8 @@
     function check_email_code() {
         data = {
             'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val(),
-            'email_confirmation_code': $('input#email_confirmation_code').val()
+            'email_confirmation_code': $('input#email_confirmation_code').val(),
+            'email': $('input#email').val(),
         }
         var jqxhr = $.post('{% url 'api:ajax_check_email_code'%}', data, function(r) {
             if(r.status){

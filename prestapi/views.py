@@ -117,7 +117,16 @@ def ajax_create_credit_user(request):
 
 def ajax_check_email_code(request):
     email_confirmation_code = request.POST.get('email_confirmation_code', '')
-    pass
+    email = request.POST.get('email', '')
+    if CreditUser.objects.filter(email = email).exists():
+        user = CreditUser.objects.get(email = email)
+        if user.mail_code == email_confirmation_code:
+            response = {"status": True, "response": "Código correcto"}
+        else:
+            response = {"status": False, "response": "Código incorrecto"}
+    else:
+        response = {"status": False, "response": "Existe usuario."}
+    return JsonResponse(response)
 
 def ajax_get_score(request):
     # First it gets the form data

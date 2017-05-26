@@ -97,12 +97,19 @@ def ajax_get_score(request):
     # it makes the POST petition to the web service
     try:
         r = requests.post(url = url, data = data)
-        print('<|><|><|><|><|><|><|><|><|><|><|><|>')
-        print(r)
-        print('<|><|><|><|><|><|><|><|><|><|><|><|>')
+        # se envía el correo con la información de la solicitud
     except:
         raise
     if r:
-        return JsonResponse(r.json());
+        score = r.json().score
+        if   score <  500:
+            response = {"status": true, "response": "denied"}
+        elif score >= 500 and score < 700:
+            response = {"status": true, "response": "pending"}
+        elif score >=  700:
+            response = {"status": true, "response": "approved"}
+        else:
+            response = {"status": false, "response": "error"}
+        return JsonResponse(response)
     else:
-        return JsonResponse({"response": r.text});
+        return JsonResponse({"status": false,"response": "error"});

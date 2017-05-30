@@ -161,7 +161,7 @@
                                     </div>
                                 </div>
                                 <div class="linkedin_btn pull-left ">
-                                    <div class="social-lg-btn pull-left">
+                                    <div onclick="liAuth()" class="social-lg-btn pull-left">
                                         <a class="btn btn-block btn-lg btn-social btn-linkedin">
                                             <span class="fa fa-linkedin"></span> Ingresar con LinkedIn
                                         </a>
@@ -585,6 +585,11 @@
     <script type="text/javascript">
 
     // Setup an event listener to make an API call once auth is complete
+    function liAuth(){
+       IN.User.authorize(function(){
+           getProfileData();
+       });
+    }
     function onLinkedInLoad() {
         IN.Event.on(IN, "auth", getProfileData);
     }

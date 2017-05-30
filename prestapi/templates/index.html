@@ -441,7 +441,7 @@
                         <div class="panel-body">
                             <div id="verification_error_msg" class="alert alert-danger"></div>
                             <div id="verification_success_msg" class="alert alert-success"></div>
-                            <p id="phone-p">
+                            <div id="phone-p">
                                 <p>
                                     Para que podamos autenticar que tú eres el dueño de la
                                     cuenta de identificación, te enviaremos un código de 4
@@ -450,7 +450,7 @@
                                 Ingresa tu número de telefono celular:
                                 <input type="text" id="phone_number" class="form-control">
                                 <button id="sms-btn" type="button" class="btn btn-default btn form-control" disabled>Enviar Código</button>
-                            </p>
+                            </div>
                             <div id="confirm-sms-p" style="display:none;">
                                 <div class="col-xs-12 col-sm-4">
                                     Ingresa el codigo de confirmación que llegó a tu <strong>teléfono celular</strong>:
@@ -474,6 +474,9 @@
         </footer>
     </div>
     <script type="text/javascript">
+    var global_ajax_get_score_url       = '{% url 'api:ajax_get_score'%}';
+    var global_ajax_check_email_code    = '{% url 'api:ajax_check_email_code'%}';
+    var global_ajax_create_credit_user  = '{% url 'api:ajax_create_credit_user'%}';
     function ajax_get_score(){
         data = {
             'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val(),
@@ -573,11 +576,15 @@
     }
     </script>
     <script src="{% static 'js/fb.js' %}" charset="utf-8"></script>
+    <script type="text/javascript" src="//platform.linkedin.com/in.js">
+        api_key:   '78w4d0nij9mmcg'
+        authorize: true
+        lang:      'es_ES'
+    </script>
     <script src="{% static 'js/sinch.min.js' %}" charset="utf-8"></script>
     <script src="{% static 'js/bootstrap-datepicker.min.js' %}" charset="utf-8"></script>
     <script src="{% static 'js/jquery.validate.min.js' %}" charset="utf-8"></script>
     <script src="{% static 'js/index.js' %}" charset="utf-8"></script>
-
     <script type="text/javascript">
     $(function() {
         var subtotal = {{total}};

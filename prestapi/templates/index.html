@@ -567,11 +567,10 @@
                 $('.ident-btn').addClass('btn-default');
                 $('.auten-btn').removeClass('btn-default');
                 $('.auten-btn').addClass('btn-primary');
-                $('#autenticacion').slideDown();
             }
         })
         .fail(function() {
-            //alert( "error" );
+            console.log( "error in create_new_user(); at index.html" );
         });
     }
     </script>

@@ -576,47 +576,12 @@
     }
     </script>
     <script src="{% static 'js/fb.js' %}" charset="utf-8"></script>
+    <script src="{% static 'js/li.js' %}" charset="utf-8"></script>
     <script type="text/javascript" src="//platform.linkedin.com/in.js">
         api_key:    78w4d0nij9mmcg
         authorize:  true
         lang:       es_ES
     </script>
-    <script type="text/javascript">
-
-    // Setup an event listener to make an API call once auth is complete
-    function liAuth(){
-        $('.li-loading-icon').fadeIn();
-       IN.User.authorize(function(){
-           getProfileData();
-       });
-    }
-
-    // Use the API call wrapper to request the member's basic profile data
-    function getProfileData() {
-        IN.API.Raw("/people/~").result(onSuccess).error(onError);
-    }
-
-    // Handle the successful return from the API call
-    function onSuccess(data) {
-        $('.li-loading-icon').fadeOut();
-        $('.li-completed-icon').fadeIn();
-        console.log(data);
-        $('#first_name').val(data.first_name);
-        $('#last_name').val(data.last_name);
-        $('#continuar2').prop('disabled', false);
-
-    }
-
-    // Handle an error response from the API call
-    function onError(error) {
-        $('.li-loading-icon').fadeOut();
-        $('.li-error-icon').fadeIn();
-        console.log(error);
-    }
-
-
-
-</script>
     <script src="{% static 'js/sinch.min.js' %}" charset="utf-8"></script>
     <script src="{% static 'js/bootstrap-datepicker.min.js' %}" charset="utf-8"></script>
     <script src="{% static 'js/jquery.validate.min.js' %}" charset="utf-8"></script>

@@ -598,11 +598,15 @@
 
     // Handle the successful return from the API call
     function onSuccess(data) {
+        $('.li-loading-icon').fadeOut();
+        $('.li-completed-icon').fadeIn();
         console.log(data);
     }
 
     // Handle an error response from the API call
     function onError(error) {
+        $('.li-loading-icon').fadeOut();
+        $('.li-error-icon').fadeIn();
         console.log(error);
     }
 

@@ -473,6 +473,8 @@
     var global_ajax_get_score_url       = '{% url 'api:ajax_get_score'%}';
     var global_ajax_check_email_code    = '{% url 'api:ajax_check_email_code'%}';
     var global_ajax_create_credit_user  = '{% url 'api:ajax_create_credit_user'%}';
+    var global_response_url             = '{% url 'api:ajax_create_credit_user'%}';
+    var global_confirmation_url         = '{% url 'api:ajax_create_credit_user'%}';
     function ajax_get_score(){
         data = {
             'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val(),

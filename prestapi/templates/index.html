@@ -98,7 +98,6 @@
                                                 <div class="nz-label pull-left">
                                                     <p>Subtotal productos:</p>
                                                     <p>Administración:</p>
-                                                    <p>Seguro:</p>
                                                     <p>Plataforma:</p>
                                                     <p>IVA (19%):</p>
                                                     <p>Interés:</p>
@@ -107,7 +106,6 @@
                                                 <div class="nz-value pull-left">
                                                     <p>$ {{total|intcomma}}</p>
                                                     <p>$ {{config.admin_costs|intcomma}}</p>
-                                                    <p>$ {{config.insurance|intcomma}}</p>
                                                     <p>$ {{config.system_costs|intcomma}}</p>
                                                     <p>$ {{config.get_iva|intcomma}}</p>
                                                     <p id="interes">$ </p>
@@ -500,7 +498,9 @@
             'personal_reference_last_name': $('#personal_reference_last_name').val(),
             'personal_reference_second_last_name': $('#personal_reference_second_last_name').val(),
             'personal_reference_phone': $('#personal_reference_phone').val(),
-            'personal_reference_city' :$('#personal_reference_city').val()
+            'personal_reference_city' : $('#personal_reference_city').val(),
+            'response_url' : global_response_url,
+            'order': '{{request.GET.order}}'
         }
         console.log(data);
         var jqxhr = $.post('{% url 'api:ajax_get_score'%}', data, function(r) {
@@ -589,19 +589,18 @@
     $(function() {
         var subtotal = {{total}};
         var admin = {{config.admin_costs}};
-        var seguro = {{config.insurance}};
         var plataf = {{config.system_costs}};
         var iva = {{config.get_iva}};
         var tasa = {{config.interest}};
         var meses = $('#meses').val();
         var interes = calcular_cuota(subtotal, tasa, meses);
-        var total = subtotal + admin + seguro + plataf + iva + interes;
+        var total = subtotal + admin + plataf + iva + interes;
         $('#total').text('$' + parseInt(total).toLocaleString());
         $('#dia_cuotas').text('día ' + $('#dia').val());
         $('#meses').on('change', function(e){
             meses = $('#meses').val();
             interes = calcular_cuota(subtotal, tasa, meses);
-            total = subtotal + admin + seguro + plataf + iva + interes;
+            total = subtotal + admin + plataf + iva + interes;
             $('#total').text('$' + parseInt(total).toLocaleString());
         });
     });

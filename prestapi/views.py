@@ -157,6 +157,8 @@ def ajax_get_score(request):
     personal_reference_second_last_name = request.POST.get('personal_reference_second_last_name', '')
     personal_reference_phone = request.POST.get('personal_reference_phone', '')
     personal_reference_city = request.POST.get('personal_reference_city', '')
+    response_url = request.POST.get('response_url', '')
+    order = request.POST.get('order', '')
 
     # Then it set the required data for the credit score web service
     url = 'http://dev.bio.credit/integration/prestame/give-a-score'
@@ -194,14 +196,20 @@ def ajax_get_score(request):
         raise
     if r:
         score = int(r.json()['score'])
-        if   score <  500:
-            response = {"status": True, "response": "denied"}
-        elif score >= 500 and score < 700:
-            response = {"status": True, "response": "pending"}
-        elif score >=  700:
-            response = {"status": True, "response": "approved"}
+        if   score <  600:
+            response = {"status": True, "response": "denied", "order": order}
+        elif score >= 600 and score < 750:
+            response = {"status": True, "response": "pending", "order": order}
+        elif score >=  750:
+            response = {"status": True, "response": "approved", "order": order}
         else:
-            response = {"status": False, "response": "Server error"}
+            response = {"status": False, "response": "Server error", "order": order}
+        # se notifica a la plataforma el estado del prestamo.
+        try:
+            r = requests.post(url = response_url, data = response)
+            # se envía el correo con la información de la solicitud
+        except:
+            raise
         return JsonResponse(response)
     else:
         return JsonResponse({"status": False,"response": "score API error",'r':str(r)});

@@ -160,6 +160,25 @@ def ajax_get_score(request):
     response_url = request.POST.get('response_url', '')
     order = request.POST.get('order', '')
 
+    url_login = 'http://dev.bio.credit/integration/prestame/login'
+    biocredit_secret = 'Dpb7j5j9AmmwynDoaCNEDageHV275GBrxlZfvMDc'
+    biocredit_id = '4'
+    import base64
+    cod = '{} {}'.format(biocredit_id, biocredit_secret)
+    cod_base64 = base64.b64encode(bytes(cod, 'utf-8'))
+    try:
+        data_login = {
+            'email': user_email,
+            'password': user_password,
+        }
+        r = requests.post(url = url_login, data = data_login, headers=headers)
+        if r:
+            token_type  = r.json()['token_type']
+            access_token= r.json()['access_token']
+        else:
+            return JsonResponse({"status": False,"response": "Login error",'r':str(r)});
+    except:
+        raise
     # Then it set the required data for the credit score web service
     url = 'http://dev.bio.credit/integration/prestame/give-a-score'
     data = {
@@ -190,7 +209,8 @@ def ajax_get_score(request):
     }
     # it makes the POST petition to the web service
     try:
-        r = requests.post(url = url, data = data)
+        headers = {'Authorization': '{} {}'.format(token_type, access_token)}
+        r = requests.post(url = url, data = data, headers=headers)
         # se envía el correo con la información de la solicitud
     except:
         raise

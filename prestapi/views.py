@@ -171,7 +171,7 @@ def ajax_get_score(request):
             'email': user_email,
             'password': user_password,
         }
-        r = requests.post(url = url_login, data = data_login, headers=headers)
+        r = requests.post(url = url_login, data = data_login)
         if r:
             token_type  = r.json()['token_type']
             access_token= r.json()['access_token']

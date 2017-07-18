@@ -25,7 +25,7 @@ SECRET_KEY = 'a3%t^yrvnq!3%o%-l(g5ix*5w$fyt0f1^6-f6m6m1eygn7*w(m'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['prestame.la','prestamela.co']
+ALLOWED_HOSTS = ['prestame.la','prestamela.co','www.prestame.la']
 
 
 # Application definition
@@ -122,6 +122,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
-
-STATIC_URL = '/static/'
+STATIC_URL = 'http://storage.googleapis.com/nazkter-zed-gs/prestamela/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True

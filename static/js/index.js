@@ -1,6 +1,11 @@
 $(function(){
     $('#dia').on('change', function(){
-        $('#dia_cuotas').text('día ' + $('#dia').val());
+        var dia_cuota = 'día ' + $('#dia').val();
+        $('#dia_cuotas').text();
+    });
+    $('#sms-btn').on('click', function(){
+        $('#phone-p').hide();
+        $('#confirm-sms-p').fadeIn();
     });
 });
 function calcular_cuota(subtotal, tasa, meses) {
@@ -48,4 +53,22 @@ $('#continuar2').on('click', function(){
         $('.auten-btn').addClass('btn-primary');
         $('#autenticacion').slideDown();
     });
+});
+$('#phone_number').on('input', function(){
+    if(this.value.length == 10 ){
+        $('#sms-btn').prop('disabled', false);
+    }else{
+        $('#sms-btn').prop('disabled', true);
+    }
+});
+$('#confirmation_code').on('input', function(){
+    if(this.value.length == 4 ){
+        $('#finish-btn').prop('disabled', false);
+    }else{
+        $('#finish-btn').prop('disabled', true);
+    }
+});
+$('#finish-btn').on('click', function(){
+    $('#confirm-sms-p').hide();
+    $('#final-p').fadeIn();
 });

@@ -219,8 +219,8 @@ def ajax_get_score(request):
     #     'studies': studies,
     # }
     data = {
-        'user_email' = 'pruebas@pruebas.com'
-        'user_password' = '1026585454'
+        'user_email' = 'pruebas@pruebas.com',
+        'user_password' = '1026585454',
         'document_type': 'C.C',
         'document_id': '1026569840',
         'first_name': 'Luis Miguel',

@@ -269,7 +269,7 @@ def ajax_get_score(request):
             r = requests.post(url = response_url, data = response)
             # se envía el correo con la información de la solicitud
         except:
-            raise
+            pass
         return JsonResponse(response)
     else:
         return JsonResponse({"status": False,"response": "score API error",'r':str(r.json())});

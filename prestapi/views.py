@@ -266,7 +266,7 @@ def ajax_get_score(request):
             response = {"status": False, "response": "Server error", "order": order}
         # se notifica a la plataforma el estado del prestamo.
         try:
-            r = requests.post(url = response_url, data = response)
+            #r = requests.post(url = response_url, data = response)
             # se envía el correo con la información de la solicitud
         except:
             raise

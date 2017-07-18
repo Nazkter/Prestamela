@@ -219,6 +219,8 @@ def ajax_get_score(request):
     #     'studies': studies,
     # }
     data = {
+        'user_email' = 'pruebas@pruebas.com'
+        'user_password' = '1026585454'
         'document_type': 'C.C',
         'document_id': '1026569840',
         'first_name': 'Luis Miguel',
@@ -272,7 +274,7 @@ def ajax_get_score(request):
             raise
         return JsonResponse(response)
     else:
-        return JsonResponse({"status": False,"response": "score API error",'r':str(r)});
+        return JsonResponse({"status": False,"response": "score API error",'r':str(r.json())});
 
 def nz_send_mail(config, subject, mail_to, params = {}, mail_template=''):
     # Create a manual connection to set the email user

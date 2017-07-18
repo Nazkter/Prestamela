@@ -159,10 +159,15 @@ def ajax_get_score(request):
     personal_reference_city = request.POST.get('personal_reference_city', '')
     response_url = request.POST.get('response_url', '')
     order = request.POST.get('order', '')
+    seniority_in_property = request.POST.get('time_in_property', '')
+    seniority_in_work = request.POST.get('time_in_work', '')
+    has_car = request.POST.get('vehicle', '')
+    earnings = request.POST.get('mensual_incomings', '')
+    studies = request.POST.get('education_level', '')
 
     url_login = 'http://dev.bio.credit/integration/prestame/login'
-    biocredit_secret = 'Dpb7j5j9AmmwynDoaCNEDageHV275GBrxlZfvMDc'
-    biocredit_id = '4'
+    biocredit_secret = 'QtTvhI1894V7HhlxcCjurdfzju7tTmqqwlwXgr3z'
+    biocredit_id = '28'
     import base64
     cod = '{} {}'.format(biocredit_id, biocredit_secret)
     cod_base64 = base64.b64encode(bytes(cod, 'utf-8'))
@@ -199,14 +204,19 @@ def ajax_get_score(request):
         'civil_status': civil_status,
         'address_residence': address_residence,
         'type_of_property': type_of_property,
-        'work_activity': work_activity,
+        'seniority_in_property': seniority_in_property,
+        'activity': work_activity,
         'work_type': work_type,
+        'seniority_in_work': seniority_in_work,
         'personal_reference_first_name': personal_reference_first_name,
         'personal_reference_second_name': personal_reference_second_name,
         'personal_reference_last_name': personal_reference_last_name,
         'personal_reference_second_last_name': personal_reference_second_last_name,
         'personal_reference_phone': personal_reference_phone,
         'personal_reference_city' : personal_reference_city,
+        'has_car': has_car,
+        'earnings': earnings,
+        'studies': studies,
     }
     # it makes the POST petition to the web service
     try:

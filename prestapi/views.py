@@ -219,7 +219,7 @@ def ajax_get_score(request):
     #     'studies': studies,
     # }
     data = {
-        'document_type': 'C.C',
+        'document_type': 1,
         'document_id': '1026569840',
         'first_name': 'Luis Miguel',
         'second_name': '',

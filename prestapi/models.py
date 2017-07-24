@@ -25,7 +25,7 @@ class Request(models.Model):
     months  = models.IntegerField(default = 6)
     pay_day = models.IntegerField(default = 15)
     def __str__(self):
-        return self.price
+        return '{}'.format(self.price)
 
 class CreditUser(models.Model):
     email           = models.CharField(max_length =100, default = '', unique = True)

@@ -629,7 +629,7 @@
         });
     }
     function request_status() {
-        var jqxhr = $.post('{% url 'api:ajax_get_status'%}', {'order':'{{request.GET.order}}}', function(r) {
+        var jqxhr = $.post('{% url 'api:ajax_get_status'%}', {'order':'{{request.GET.order}}'}, function(r) {
             console.log(r);
             if (r.status === false) {
                 $('#aprobacion_error_msg').empty().html(`

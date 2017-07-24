@@ -117,7 +117,9 @@ footer{
 #form_error_msg{
     display: none;
 }
-
 .error{
     color: red;
+}
+#verification_error_msg, #verification_success_msg{
+    display: none;
 }

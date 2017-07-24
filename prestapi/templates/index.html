@@ -449,6 +449,36 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h2 class="panel-title">
+                            <span class="glyphicons glyphicons-clock"></span>
+                            Espera la aprovación.
+                        </h2>
+                    </div>
+                    <div id="aprobacion" style="display:none;">
+                        <div class="panel-body">
+                            APROBACION EN PROCESO TE CONFIRMAMOS EN MINUTOS.
+                            <div class="resultado_aprobacion">
+                                <div>
+                                    Código: <span id="prest_code"></span>
+                                </div>
+                                <div>
+                                    Código: <span id="prest_date"></span>
+                                </div>
+                                <div>
+                                    Código: <span id="prest_plazo"></span>
+                                </div>
+                                <div>
+                                    Código: <span id="prest_amount"></span>
+                                </div>
+                                <div>
+                                    Código: <span id="prest_state"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h2 class="panel-title">
                             <span class="glyphicon glyphicon-th"></span>
                             Firma con tu código SMS.
                         </h2>
@@ -584,7 +614,7 @@
                 $('.ident-btn').addClass('btn-default');
                 $('.auten-btn').removeClass('btn-default');
                 $('.auten-btn').addClass('btn-primary');
-                send_sms();
+                ajax_get_score();
             }
         })
         .fail(function() {

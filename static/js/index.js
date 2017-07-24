@@ -140,7 +140,7 @@ $('#continuar2').on('click', function(){
         $('#identificacion').slideUp(function(){
             $('#final_phone').text($('#phone').val());
             $('#final_email').text($('#email').val());
-            $('#autenticacion').slideDown(function(){
+            $('#aprobacion').slideDown(function(){
                 create_new_user();
             });
         });

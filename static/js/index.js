@@ -1,13 +1,18 @@
-var myVar = setInterval(function(){ request_status() }, 5000);
-
-function myTimer() {
-    var d = new Date();
-    var t = d.toLocaleTimeString();
-    document.getElementById("demo").innerHTML = t;
+var actual_status = setInterval(function(){ request_status() }, 5000);
+var score_result = 'pending';
+function request_status() {
+    if (score_result == 'denied') {
+        clearInterval(actual_status);
+        $('#aprobacion_error_msg').empty().html(`
+            <p>Tu solicitud de crédito ha sido denegada.</p>
+            <a href="`+global_confirmation_url+`" class="btn btn-default">Volver al E-Commerce</a>`).fadeIn();
+    }else if (score_result == 'approved') {
+        $('.resultado_aprobacion').fadeIn();
+    }
 }
 
 function myStopFunction() {
-    clearInterval(myVar);
+
 }
 function manage_score_response(data){
     console.log(data);

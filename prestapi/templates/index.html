@@ -460,7 +460,7 @@
                             APROBACION EN PROCESO TE CONFIRMAMOS EN MINUTOS.
                             <div class="resultado_aprobacion" >
                                 <div>
-                                    Código: <span id="prest_code"></span>
+                                    Código: <span id="prest_code">{{request.GET.order}}</span>
                                 </div>
                                 <div>
                                     Fecha de aprobación: <span id="prest_date"></span>
@@ -469,7 +469,7 @@
                                     Plazo: <span id="prest_plazo"></span>
                                 </div>
                                 <div>
-                                    Cantidad: <span id="prest_amount"></span>
+                                    Cantidad: <span id="prest_amount">${{total|intcomma}}</span>
                                 </div>
                                 <div>
                                     Estado: <span id="prest_status"></span>
@@ -653,6 +653,7 @@
         $('#dia_cuotas').text('día ' + $('#dia').val());
         $('#meses').on('change', function(e){
             meses = $('#meses').val();
+            $('#prest_plazo').text(meses+' meses');
             interes = calcular_cuota(subtotal, tasa, meses);
             total = subtotal + admin + plataf + iva + interes;
             $('#total').text('$' + parseInt(total).toLocaleString());

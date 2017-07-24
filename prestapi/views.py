@@ -152,7 +152,7 @@ def ajax_get_status(request):
         date = credit_request.approved_date
         response = {"status": status, "order": order, "date": date, "response": 'Datos actualizados'}
     else:
-        response = {"status": False, "response": "No existen datos en la base de datos"}
+        response = {"status": False, "response": "No existen datos en la base de datos", "order":order}
     return JsonResponse(response)
 def ajax_get_score(request):
     # First it gets the form data

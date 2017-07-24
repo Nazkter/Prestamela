@@ -631,7 +631,7 @@
     function request_status() {
         data = {
             'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val(),
-            'order': '{{request.GET.order}}'}
+            'order': '{{request.GET.order}}'
         }
         var jqxhr = $.post('{% url 'api:ajax_get_status'%}', data, function(r) {
             console.log(r);

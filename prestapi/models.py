@@ -25,6 +25,7 @@ class Request(models.Model):
     price = models.IntegerField(default = 0)
     months = models.IntegerField(default = 6)
     pay_day = models.IntegerField(default = 15)
+    user = models.ForeignKey('CreditUser', on_delete=models.SET_NULL)
 
     def __str__(self):
         return '{}'.format(self.price)
@@ -48,7 +49,7 @@ class CreditUser(models.Model):
     favorite_bank   = models.CharField(max_length = 100, default = '')
     mail_code       = models.CharField(max_length = 4, default = '')
     sms_code        = models.CharField(max_length = 4, default = '')
-    credit_requests = models.ManyToManyField('Request')
+    #credit_requests = models.ManyToManyField('Request')
     mensual_outgoings   = models.IntegerField(default = 0)
     mensual_incomings   = models.IntegerField(default = 0)
     address_residence   = models.CharField(max_length = 100, default = '')

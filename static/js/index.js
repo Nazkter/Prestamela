@@ -125,7 +125,7 @@ $('#continuar2').on('click', function(){
     $('#request_form').validate({
         errorPlacement: function(error, element) {
             if (element.attr("name") == "policy"){
-                error.insertAfter($('#custom_error_terms'));
+                error.insertAfter($('#custom_error_policy'));
             }else{
                 error.insertAfter(element);
             }

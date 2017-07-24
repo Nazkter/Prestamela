@@ -27,8 +27,8 @@ class Request(models.Model):
     price = models.IntegerField(default = 0)
     months = models.IntegerField(default = 6)
     pay_day = models.IntegerField(default = 15)
-    user = models.ForeignKey('CreditUser', on_delete=models.SET_NULL)
-    approved = models.BooleanField(default=False, null=True, blank=True)
+    user = models.ForeignKey('CreditUser', null=True, on_delete=models.SET_NULL)
+    approved = models.NullBooleanField(default=False, null=True, blank=True)
 
     def __str__(self):
         return '{}: ${} ({})'.format(self.user.email, self.price, self.order)

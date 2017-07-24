@@ -62,7 +62,7 @@ def ajax_create_credit_user(request):
         pay_day = request.POST.get('pay_day', '')
         price = request.POST.get('price', '')
         order = request.POST.get('order', '')
-        new_credit_request = Request(user=credit_user, order=order, price=price, months=months, pay_day=pay_day)
+        new_credit_request = Request(user=credit_user, order=order, price=price, months=months, pay_day=pay_day, approved=None)
         try:
             new_credit_request.save()
             response = {"status": True, "response": "Usuario creado correctamente"}
@@ -108,7 +108,7 @@ def ajax_create_credit_user(request):
         pay_day = request.POST.get('pay_day', '')
         price = request.POST.get('price', '')
         order = request.POST.get('order', '')
-        new_credit_request = Request(user=new_user, order=order, price=price, months=months, pay_day=pay_day)
+        new_credit_request = Request(user=new_user, order=order, price=price, months=months, pay_day=pay_day, approved=None)
         try:
             #new_user.credit_requests.add(new_credit_request)
             # it generates a new key for the verification code

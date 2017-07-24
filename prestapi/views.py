@@ -61,7 +61,6 @@ def ajax_create_credit_user(request):
         return JsonResponse(response)
     else:
         new_user = CreditUser(email = email)
-        new_user.csrfmiddlewaretoken = request.POST.get('csrfmiddlewaretoken', '')
         new_user.document_type = request.POST.get('document_type', '')
         new_user.document_id = request.POST.get('document_id', '')
         new_user.first_name = request.POST.get('first_name', '')
@@ -95,7 +94,8 @@ def ajax_create_credit_user(request):
         months = request.POST.get('months', '')
         pay_day = request.POST.get('pay_day', '')
         price = request.POST.get('price', '')
-        new_credit_request = Request(price = price, months = months, pay_day = pay_day)
+        order = request.POST.get('order', '')
+        new_credit_request = Request(user=new_user, order=order, price=price, months=months, pay_day=pay_day)
         try:
             new_credit_request.save()
             new_user.credit_requests.add(new_credit_request)
@@ -131,6 +131,16 @@ def ajax_check_email_code(request):
         response = {"status": False, "response": "Existe usuario."}
     return JsonResponse(response)
 
+def ajax_get_status(request):
+    order = request.POST.get('order', None),
+    if order and Request.objects.filter(order=order).exists():
+        credit_request = Request.objects.get(order=order)
+        status = credit_request.approved
+        date = credit_request.approved_date
+        response = {"status": status, "order": order, "date": date, "response": 'Datos actualizados'}
+    else:
+        response = {"status": False, "response": "No existen datos en la base de datos"}
+    return JsonResponse(response)
 def ajax_get_score(request):
     # First it gets the form data
     user_email = 'pruebas@pruebas.com'

@@ -21,14 +21,17 @@ class Config(models.Model):
         return int((self.admin_costs + self.insurance + self.system_costs) * self.iva)
 
 class Request(models.Model):
-    order = models.CharField(max_length=100, default='')
+    creation_date = models.DateField(auto_now_add=True)
+    approved_date = models.DateField(auto_now=True)
+    order = models.CharField(max_length=100, default='', unique=True)
     price = models.IntegerField(default = 0)
     months = models.IntegerField(default = 6)
     pay_day = models.IntegerField(default = 15)
     user = models.ForeignKey('CreditUser', on_delete=models.SET_NULL)
+    approved = models.BooleanField(default=False, null=True, blank=True)
 
     def __str__(self):
-        return '{}'.format(self.price)
+        return '{}: ${} ({})'.format(self.user.email, self.price, self.order)
 
     class Meta:
         verbose_name_plural = 'Solicitudes'

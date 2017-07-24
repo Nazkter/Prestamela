@@ -612,7 +612,8 @@
             'personal_reference_city' :$('#personal_reference_city').val(),
             'mensual_outgoings' :$('#mensual_outgoings').val(),
             'mensual_incomings' :$('#mensual_incomings').val(),
-            'favorite_bank' :$('#favorite_bank').val()
+            'favorite_bank' :$('#favorite_bank').val(),
+            'order': '{{request.GET.order}}'
         }
         var jqxhr = $.post('{% url 'api:ajax_create_credit_user'%}', data, function(r) {
             if(r.status){
@@ -625,6 +626,21 @@
         })
         .fail(function() {
             console.log( "error in create_new_user(); at index.html" );
+        });
+    }
+    function request_status() {
+        var jqxhr = $.post('{% url 'api:ajax_get_status'%}', {'order':{{request.GET.order}}}, function(r) {
+            console.log(r);
+            if (r.status === false) {
+                $('#aprobacion_error_msg').empty().html(`
+                    <p>Tu solicitud de crédito ha sido denegada.</p>
+                    <a href="`+global_confirmation_url+`" class="btn btn-default">Volver al E-Commerce</a>`).fadeIn();
+            }else if (r.status === true) {
+                $('.resultado_aprobacion').fadeIn();
+            }
+        })
+        .fail(function() {
+            //alert( "error" );
         });
     }
     </script>

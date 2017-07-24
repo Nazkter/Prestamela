@@ -21,11 +21,16 @@ class Config(models.Model):
         return int((self.admin_costs + self.insurance + self.system_costs) * self.iva)
 
 class Request(models.Model):
-    price   = models.IntegerField(default = 0)
-    months  = models.IntegerField(default = 6)
+    order = models.CharField(max_length=100, default='')
+    price = models.IntegerField(default = 0)
+    months = models.IntegerField(default = 6)
     pay_day = models.IntegerField(default = 15)
+
     def __str__(self):
         return '{}'.format(self.price)
+
+    class Meta:
+        verbose_name_plural = 'Solicitudes'
 
 class CreditUser(models.Model):
     email           = models.CharField(max_length =100, default = '', unique = True)
@@ -54,10 +59,10 @@ class CreditUser(models.Model):
     personal_reference_last_name    = models.CharField(max_length = 100, default = '')
 
     class Meta:
-        verbose_name_plural = 'Usuario de creditos'
+        verbose_name_plural = 'Usuarios de credito'
 
     def __str__(self):
-        return email
+        return self.email
 
 
 class Client(models.Model):

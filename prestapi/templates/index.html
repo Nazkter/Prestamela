@@ -66,10 +66,7 @@
                                             <select class="form-control meses" id="meses" required>
                                                 <option value="1">1 meses</option>
                                                 <option value="2">2 meses</option>
-                                                <option value="3">3 meses</option>
-                                                <option value="4">4 meses</option>
-                                                <option value="5">5 meses</option>
-                                                <option value="6" selected>6 meses</option>
+                                                <option value="3" selected>3 meses</option>
                                             </select>
                                             y pagar el
                                             <select class="form-control dia" id="dia" required>
@@ -228,7 +225,7 @@
                                             <label for="gender" class="col-sm-12">Género: *</label>
                                             <div class="col-sm-12">
                                                 <select class="form-control" name="gender" id="gender" required>
-                                                    <option value="">Seleccione un tipo género</option>
+                                                    <option value="">Seleccione un género</option>
                                                     <option value="f">Femenino</option>
                                                     <option value="m" selected>Masculino</option>
                                                 </select>
@@ -349,7 +346,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <label for="work_type" class="col-sm-12">Tipo de actividad (opcional):</label>
+                                            <label for="work_type" class="col-sm-12">Tipo de actividad: *</label>
                                             <div class="col-sm-12">
                                                 <select class="form-control" name="work_type" id="work_type" required>
                                                     <option value="">Seleccione una actividad</option>
@@ -435,8 +432,16 @@
                                     </div>
                                 </form>
                             </div>
+                            <div class="form_checkbox_wrap   row">
+                                <input class="checkbox" type="checkbox" name="policy" id="policy" required="">&nbsp;He leido, entinedo y acepto la <a href="javascript:;" target="_blank">política de tratamiento de datos</a>*
+                                <div id="custom_error_policy"></div>
+                            </div>
                             <div class="row" style="padding: 15px 30px;">
                                 <button id="continuar2" type="button" class="btn btn-default btn-lg" disabled>Continuar</button>
+                            </div>
+                            <div class="note">
+                                DENTRO DE NUESTRO PROCESO DE APROBACION Y VELANDO SIEMPRE POR TU SEGURIDAD VERIFICAREMOS
+                                TODOS LOS DATOS INGRESADOS Y ESTOS SE TRATARAN BAJO LA POLITICA DE NUESTRA CORPORACION.
                             </div>
                         </div>
                     </div>

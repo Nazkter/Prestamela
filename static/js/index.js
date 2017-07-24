@@ -127,7 +127,15 @@ $('#continuar2').on('click', function(){
         email: "Correo electrónico inválido",
         number: "Debe contener unicamente números",
     });
-    $('#request_form').validate({});
+    $('#request_form').validate({
+        errorPlacement: function(error, element) {
+            if (element.attr("name") == "policy"){
+                error.insertAfter($('#custom_error_terms'));
+            }else{
+                error.insertAfter(element);
+            }
+        },
+    });
     if($('#request_form').valid()){
         $('#identificacion').slideUp(function(){
             $('#final_phone').text($('#phone').val());

@@ -31,7 +31,7 @@ class Request(models.Model):
     approved = models.NullBooleanField(default=False, null=True, blank=True)
 
     def __str__(self):
-        return '{}: ${} ({})'.format(self.user.email, self.price, self.order)
+        return '{}: ${} ({})'.format(self.user, self.price, self.order)
 
     class Meta:
         verbose_name_plural = 'Solicitudes'

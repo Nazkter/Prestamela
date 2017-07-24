@@ -123,3 +123,6 @@ footer{
 #verification_error_msg, #verification_success_msg{
     display: none;
 }
+.resultado_aprobacion, #aprobacion_error_msg, #aprobacion_success_msg{
+    display: none;
+}

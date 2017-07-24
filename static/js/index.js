@@ -1,3 +1,14 @@
+var myVar = setInterval(function(){ request_status() }, 5000);
+
+function myTimer() {
+    var d = new Date();
+    var t = d.toLocaleTimeString();
+    document.getElementById("demo").innerHTML = t;
+}
+
+function myStopFunction() {
+    clearInterval(myVar);
+}
 function manage_score_response(data){
     console.log(data);
     $('#confirm-sms-p').hide();

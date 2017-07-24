@@ -455,22 +455,28 @@
                     </div>
                     <div id="aprobacion" style="display:none;">
                         <div class="panel-body">
+                            <div id="aprobacion_error_msg" class="alert alert-danger"></div>
+                            <div id="aprobacion_success_msg" class="alert alert-success"></div>
                             APROBACION EN PROCESO TE CONFIRMAMOS EN MINUTOS.
-                            <div class="resultado_aprobacion">
+                            <div class="resultado_aprobacion" >
                                 <div>
                                     Código: <span id="prest_code"></span>
                                 </div>
                                 <div>
-                                    Código: <span id="prest_date"></span>
+                                    Fecha de aprobación: <span id="prest_date"></span>
                                 </div>
                                 <div>
-                                    Código: <span id="prest_plazo"></span>
+                                    Plazo: <span id="prest_plazo"></span>
                                 </div>
                                 <div>
-                                    Código: <span id="prest_amount"></span>
+                                    Cantidad: <span id="prest_amount"></span>
                                 </div>
                                 <div>
-                                    Código: <span id="prest_state"></span>
+                                    Estado: <span id="prest_status"></span>
+                                </div>
+                                <div>
+                                    <button type="button" name="resend_sms" id="resend_sms"> Reenviar códigos </button>
+                                    <button type="button" name="go_contract" id="go_contract"> Firmar contrato </button>
                                 </div>
                             </div>
                         </div>

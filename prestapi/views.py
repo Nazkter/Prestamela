@@ -147,7 +147,7 @@ def ajax_check_email_code(request):
 def ajax_get_status(request):
     order = request.POST.get('order', None)
     if Request.objects.filter(order=order).exists():
-        credit_request = Request.objects.get(order=order)
+        credit_request = Request.objects.filter(order=order).first()
         status = credit_request.approved if credit_request.approved != None else 'null'
         date = credit_request.approved_date
         response = {"status": status, "order": order, "date": date, "response": 'Datos actualizados'}

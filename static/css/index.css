@@ -110,3 +110,14 @@ footer{
     color: #f44336;
     font-size: 30px;
 }
+.form_checkbox_wrap{
+    display: inline-flex;
+    margin-left: 15px;
+}
+#form_error_msg{
+    display: none;
+}
+
+.error{
+    color: red;
+}

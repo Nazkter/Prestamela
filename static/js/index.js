@@ -1,4 +1,6 @@
-var actual_status = setInterval(function(){ request_status() }, 5000);
+$(function(){
+    var actual_status = setInterval(function(){ request_status() }, 10000);
+});
 var score_result = 'pending';
 
 function manage_score_response(data){

@@ -1,28 +1,29 @@
 $(function(){
-    var actual_status = setInterval(function(){ request_status() }, 10000);
+
 });
 var score_result = 'pending';
 
 function manage_score_response(data){
-    console.log(data);
-    $('#confirm-sms-p').hide();
-    if (data.status) {
-        if (data.response === 'denied') {
-            // Muestro denegado
-            show_verification_error('Transacción finalizada: solicitud de credito denegada.');
-        }else if (data.response === 'pending') {
-            // Muestro pendiente
-            show_verification_error('Transacción finalizada: tu solicitud está en revisión, pronto nos pondremos en contacto contigo.');
-        }else if(data.response === 'approved'){
-            // Muestro aprobado
-            show_verification_success('Transacción finalizada: solicitud de credito aprobada.');
-        }else{
-            console.log('index.js:manage_score_response:plop')
-        }
-        // Se notifica al E-Commerce
-    }else{
-        show_verification_error('No se pudo generar un puntaje con los datos suministrados.');
-    }
+    //console.log(data);
+    //$('#confirm-sms-p').hide();
+    var actual_status = setInterval(function(){ request_status() }, 10000);
+    // if (data.status) {
+    //     if (data.response === 'denied') {
+    //         // Muestro denegado
+    //         show_verification_error('Transacción finalizada: solicitud de credito denegada.');
+    //     }else if (data.response === 'pending') {
+    //         // Muestro pendiente
+    //         show_verification_error('Transacción finalizada: tu solicitud está en revisión, pronto nos pondremos en contacto contigo.');
+    //     }else if(data.response === 'approved'){
+    //         // Muestro aprobado
+    //         show_verification_success('Transacción finalizada: solicitud de credito aprobada.');
+    //     }else{
+    //         console.log('index.js:manage_score_response:plop')
+    //     }
+    //     // Se notifica al E-Commerce
+    // }else{
+    //     show_verification_error('No se pudo generar un puntaje con los datos suministrados.');
+    // }
 }
 function show_verification_success(msg){
     $('#verification_error_msg').hide();

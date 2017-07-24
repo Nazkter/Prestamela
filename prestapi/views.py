@@ -48,15 +48,28 @@ def show_form(request):
 def ajax_create_credit_user(request):
     email = request.POST.get('email', '')
     if CreditUser.objects.filter(email = email).exists():
+        credit_user = CreditUser.objects.get(email = email)
         # it generates a new key for the verification code
-        key = nz_generate_key(email)
+        #key = nz_generate_key(email)
         # set the variables for the confirmation email
-        config      = Config.objects.get(pk = 1)
-        subject     = 'Codigo de confirmación para solicitud de credito'
-        mail_to = [email]
+        #config      = Config.objects.get(pk = 1)
+        #subject     = 'Codigo de confirmación para solicitud de credito'
+        #mail_to = [email]
         # set the email template variable
-        params = {'key': key}
-        nz_send_mail(config, subject, mail_to, params, 'email_verification_code.html')
+        #params = {'key': key}
+        #nz_send_mail(config, subject, mail_to, params, 'email_verification_code.html')
+        months = request.POST.get('months', '')
+        pay_day = request.POST.get('pay_day', '')
+        price = request.POST.get('price', '')
+        order = request.POST.get('order', '')
+        new_credit_request = Request(user=credit_user, order=order, price=price, months=months, pay_day=pay_day)
+        try:
+            new_credit_request.save()
+            response = {"status": True, "response": "Usuario creado correctamente"}
+            return JsonResponse(response)
+        except:
+            response = {"status": False, "response": "No se puede crear la petición."}
+            return JsonResponse(response)
         response = {"status": True, "response": "user exists"}
         return JsonResponse(response)
     else:
@@ -97,17 +110,17 @@ def ajax_create_credit_user(request):
         order = request.POST.get('order', '')
         new_credit_request = Request(user=new_user, order=order, price=price, months=months, pay_day=pay_day)
         try:
-            new_credit_request.save()
-            new_user.credit_requests.add(new_credit_request)
+            #new_user.credit_requests.add(new_credit_request)
             # it generates a new key for the verification code
-            key = nz_generate_key(email)
+            #key = nz_generate_key(email)
             # set the variables for the confirmation email
-            config      = Config.objects.get(pk = 1)
-            subject     = 'Codigo de confirmación para solicitud de credito'
-            mail_to = [email]
+            #config      = Config.objects.get(pk = 1)
+            #subject     = 'Codigo de confirmación para solicitud de credito'
+            #mail_to = [email]
             # set the email template variable
-            params = {'key': key}
-            nz_send_mail(config, subject, mail_to, params, 'email_verification_code.html')
+            #params = {'key': key}
+            #nz_send_mail(config, subject, mail_to, params, 'email_verification_code.html')
+            new_credit_request.save()
             response = {"status": True, "response": "Usuario creado correctamente"}
             return JsonResponse(response)
         except:

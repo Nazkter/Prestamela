@@ -44,7 +44,7 @@ function show_form_error(msg){
     $('#form_error_msg').fadeIn();
 }
 sinchClient = new SinchClient({
-	applicationKey: 'e55639fd-6e4a-40a1-ac22-4301e8ec619b',
+	applicationKey: '8077aa32-9f67-4f67-b41f-88864ff3514b',
 });
 var ongoingVerification;
 function send_email(){

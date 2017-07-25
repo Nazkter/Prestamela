@@ -68,7 +68,7 @@ function send_sms(){
 }
 $('#finish-btn').on('click', function(){
     event.preventDefault();
-	clearMsg();
+	//clearMsg();
 	var verificationCode = $('input#confirmation_code').val();
 	ongoingVerification.verify(verificationCode).then(function() {
         check_email_code(verificationCode);

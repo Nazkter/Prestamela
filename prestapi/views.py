@@ -152,18 +152,19 @@ def ajax_get_status(request):
         date = credit_request.approved_date
         months = credit_request.months
         response = {"status": status, "order": order, "date": date, "months": months}
-        # envío el correo
-        credit_user = credit_request.user
-        email = credit_user.email
-        # it generates a new key for the verification code
-        key = nz_generate_key(email)
-        # set the variables for the confirmation email
-        config      = Config.objects.get(pk = 1)
-        subject     = 'Codigo de confirmación para solicitud de credito'
-        mail_to = [email]
-        #set the email template variable
-        params = {'key': key}
-        nz_send_mail(config, subject, mail_to, params, 'email_verification_code.html')
+        if status == True:
+            # envío el correo
+            credit_user = credit_request.user
+            email = credit_user.email
+            # it generates a new key for the verification code
+            key = nz_generate_key(email)
+            # set the variables for the confirmation email
+            config      = Config.objects.get(pk = 1)
+            subject     = 'Codigo de confirmación para solicitud de credito'
+            mail_to = [email]
+            #set the email template variable
+            params = {'key': key}
+            nz_send_mail(config, subject, mail_to, params, 'email_verification_code.html')
     else:
         response = {"status": False, "response": "No existen datos en la base de datos", "order":order}
     return JsonResponse(response)

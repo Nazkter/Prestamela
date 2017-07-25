@@ -150,7 +150,8 @@ def ajax_get_status(request):
         credit_request = Request.objects.filter(order=order).first()
         status = credit_request.approved if credit_request.approved != None else 'null'
         date = credit_request.approved_date
-        response = {"status": status, "order": order, "date": date, "response": 'Datos actualizados'}
+        months = credit_request.months
+        response = {"status": status, "order": order, "date": date, "months": months}
     else:
         response = {"status": False, "response": "No existen datos en la base de datos", "order":order}
     return JsonResponse(response)

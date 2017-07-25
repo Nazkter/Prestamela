@@ -450,7 +450,7 @@
                     <div class="panel-heading">
                         <h2 class="panel-title">
                             <span class="glyphicons glyphicons-clock"></span>
-                            Espera la aprovación.
+                            Espera la aprobación.
                         </h2>
                     </div>
                     <div id="aprobacion" style="display:none;">
@@ -466,13 +466,13 @@
                                     Fecha de aprobación: <span id="prest_date"></span>
                                 </div>
                                 <div>
-                                    Plazo: <span id="prest_plazo"></span>
+                                    Plazo: <span id="prest_plazo"></span> meses
                                 </div>
                                 <div>
                                     Cantidad: <span id="prest_amount">${{total|intcomma}}</span>
                                 </div>
                                 <div>
-                                    Estado: <span id="prest_status"></span>
+                                    Estado: <span id="prest_status">APROBADO</span>
                                 </div>
                                 <div>
                                     <button type="button" name="resend_sms" id="resend_sms"> Reenviar códigos </button>
@@ -636,11 +636,17 @@
         var jqxhr = $.post('{% url 'api:ajax_get_status'%}', data, function(r) {
             console.log(r);
             if (r.status === false) {
+                clearInterval(actual_status);
                 $('#aprobacion_error_msg').empty().html(`
                     <p>Tu solicitud de crédito ha sido denegada.</p>
                     <a href="`+global_confirmation_url+`" class="btn btn-default">Volver al E-Commerce</a>`).fadeIn();
             }else if (r.status === true) {
+                clearInterval(actual_status);
+                // pongo los valores en el html
+                $('#prest_date').text(r.date);
+                $('#prest_plazo').text(r.months);
                 $('.resultado_aprobacion').fadeIn();
+                //envío los codigos
             }
         })
         .fail(function() {

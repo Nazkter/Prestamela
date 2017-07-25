@@ -293,6 +293,9 @@ def ajax_get_score(request):
         raise
     if r:
         score = int(r.json()['score'])
+        credit_request = Request.objects.filter(order=order).first()
+        credit_request.score = score
+        credit_request.save()
         if   score <  600:
             response = {"status": True, "response": "denied", "order": order}
         elif score >= 600 and score < 750:

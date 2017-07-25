@@ -646,7 +646,7 @@
                 $('#prest_date').text(r.date);
                 $('#prest_plazo').text(r.months);
                 $('.resultado_aprobacion').fadeIn();
-                //envío los codigos
+                send_sms();
             }
         })
         .fail(function() {

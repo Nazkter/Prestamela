@@ -1,12 +1,14 @@
-$(function(){
 
-});
 var score_result = 'pending';
+$('#go_contract').on('click', function(){
+    $('#aprobacion').hide();
+    $('#autenticacion').fadeIn();
+});
 
 function manage_score_response(data){
     //console.log(data);
     //$('#confirm-sms-p').hide();
-    var actual_status = setInterval(function(){ request_status() }, 10000);
+    actual_status = setInterval(function(){ request_status() }, 10000);
     // if (data.status) {
     //     if (data.response === 'denied') {
     //         // Muestro denegado

@@ -636,17 +636,17 @@
         var jqxhr = $.post('{% url 'api:ajax_get_status'%}', data, function(r) {
             console.log(r);
             if (r.status === false) {
-                clearInterval(actual_status);
                 $('#aprobacion_error_msg').empty().html(`
                     <p>Tu solicitud de crédito ha sido denegada.</p>
                     <a href="`+global_confirmation_url+`" class="btn btn-default">Volver al E-Commerce</a>`).fadeIn();
+                    clearInterval(actual_status);
             }else if (r.status === true) {
-                clearInterval(actual_status);
                 // pongo los valores en el html
                 $('#prest_date').text(r.date);
                 $('#prest_plazo').text(r.months);
                 $('.resultado_aprobacion').fadeIn();
                 send_sms();
+                clearInterval(actual_status);
             }
         })
         .fail(function() {
